@@ -1,0 +1,12 @@
+%p
+  %strong
+    Nombre(s):
+  = @customer.first_name
+
+%p
+  %strong
+    Apellido(s):
+  = @customer.last_name
+
+= link_to 'Atrás', customers_path
+= link_to 'Editar', edit_customer_path(@customer)
