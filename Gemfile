@@ -45,3 +45,4 @@ end
 # gem 'debugger', group: [:development, :test]
 gem 'haml', '~> 4.0.3'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'nested_form', '~> 0.3.2'

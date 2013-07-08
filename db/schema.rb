@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130705020438) do
+ActiveRecord::Schema.define(version: 20130708164244) do
+
+  create_table "addresses", force: true do |t|
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "zip_code"
+    t.string   "state"
+    t.string   "city"
+    t.string   "town"
+    t.string   "location"
+    t.text     "comments"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "customers", force: true do |t|
     t.string   "first_name"
@@ -21,8 +36,8 @@ ActiveRecord::Schema.define(version: 20130705020438) do
   end
 
   create_table "emails", force: true do |t|
-    t.string   "address"
-    t.string   "address_type"
+    t.string   "email"
+    t.string   "email_type"
     t.integer  "owner_id"
     t.string   "owner_type"
     t.datetime "created_at"
