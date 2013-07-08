@@ -1,51 +1,64 @@
-= nested_form_for @customer do |f|
-  - if @customer.errors.any?
-    #errorExplanation
-      %h2
-        = pluralize(@customer.errors.count, "error")
-        prohibited this customer from being saved:
-    %ul
-      - @customer.errors.full_messages.each do |msg|
-        %li= msg
-
-  %p
-    = f.label :first_name
-    %br
-    = f.text_field :first_name
-
-  %p
-    = f.label :last_name
-    %br
-    = f.text_field :last_name
+= nested_form_for @customer, :html => { :class => 'form-horizontal' } do |f|
+  .row
+    .span4
+      .control-group
+        = f.label :first_name, :class => 'control-label'
+        .controls
+          = f.text_field :first_name, :class => 'text_field'
+    .span4
+      .control-group
+        = f.label :last_name, :class => 'control-label'
+        .controls
+          = f.text_field :last_name, :class => 'text_field'
 
   %h3 Dirección
   = f.fields_for :address do |address_form|
+    .row
+      .span4
+        .control-group
+          = address_form.label :address1, :class => 'control-label'
+          .controls
+            = address_form.text_field :address1, :class => 'text_field'
 
-    %p
-      = address_form.label :address1
-      = address_form.text_field :address1
-    %p
-      = address_form.label :address2
-      = address_form.text_field :address2
-    %p
-      = address_form.label :state
-      = address_form.text_field :state
-    %p
-      = address_form.label :city
-      = address_form.text_field :city
-    %p
-      = address_form.label :town
-      = address_form.text_field :town
-    %p
-      = address_form.label :location
-      = address_form.text_field :location
-    %p
-      = address_form.label :zip_code
-      = address_form.text_field :zip_code
-    %p
-      = address_form.label :comments
-      %br
-      = address_form.text_area :comments, :cols => 30, :rows => 5
+      .span4
+        .control-group
+          = address_form.label :address2, :class => 'control-label'
+          .controls
+            = address_form.text_field :address2, :class => 'text_field'
+    .row
+      .span4
+        .control-group
+          = address_form.label :state, :class => 'control-label'
+          .controls
+            = address_form.text_field :state, :class => 'text_field'
+      .span4
+        .control-group
+          = address_form.label :city, :class => 'control-label'
+          .controls
+            = address_form.text_field :city, :class => 'text_field'
+    .row
+      .span4
+        .control-group
+          = address_form.label :town, :class => 'control-label'
+          .controls
+            = address_form.text_field :town, :class => 'text_field'
+      .span4
+        .control-group
+          = address_form.label :location, :class => 'control-label'
+          .controls
+            = address_form.text_field :location, :class => 'text_field'
+    .row
+      .span4
+        .control-group
+          = address_form.label :zip_code, :class => 'control-label'
+          .controls
+            = address_form.text_field :zip_code, :class => 'text_field'
+    .row
+      .span9
+        .control-group
+          = address_form.label :comments, :class => 'control-label'
+          .controls
+            = address_form.text_area :comments, :cols => 30, :rows => 5, :class => 'text_area'
 
   %h3 Teléfono(s)
   = f.fields_for :phones do |phone_form|
@@ -64,5 +77,8 @@
 
   %p
     = f.link_to_add "Agregar Correo Electrónico", :emails
-  %p
-    = f.submit
+
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")),
+                customers_path, :class => 'btn'

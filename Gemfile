@@ -15,6 +15,7 @@ gem 'haml', '~> 4.0.3'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'nested_form', '~> 0.3.2'
 gem 'simple-navigation', '~> 3.11.0'
+gem 'rails-i18n', '~> 4.0.0.pre'
 
 
 # Use jquery as the JavaScript library
