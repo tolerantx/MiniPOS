@@ -1,0 +1,23 @@
+%header
+
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container
+        %a.btn.btn-navbar{:'data-toggle' => "collapse", :'data-target' => ".nav-collapse"}
+          %span.icon-bar &nbsp;
+          %span.icon-bar &nbsp;
+          %span.icon-bar &nbsp;
+
+        %a.brand{:href => "#"} Some Store
+        .nav-collapse
+          %ul.nav
+            %li.divider-vertical
+            %li= link_to "Clientes", customers_path
+            %li.divider-vertical
+            %li= link_to "Price List"
+            %li.divider-vertical
+            %li= link_to "Contact Us"
+            %li.divider-vertical
+            %li= link_to "Cart"
+            %li.divider-vertical
+

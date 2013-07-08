@@ -5,18 +5,17 @@ gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-
-# Use SCSS for stylesheets
+gem 'twitter-bootstrap-rails', '~> 2.2.7'
 gem 'sass-rails', '~> 4.0.0'
-
-# Use Uglifier as compressor for JavaScript assets
+gem 'therubyracer', :platforms => :ruby
+gem 'less-rails', '~> 2.3.3'
 gem 'uglifier', '~> 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+gem 'haml', '~> 4.0.3'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'nested_form', '~> 0.3.2'
+gem 'simple-navigation', '~> 3.11.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 3.0.2'
@@ -43,6 +42,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'haml', '~> 4.0.3'
-gem 'inherited_resources', github: 'josevalim/inherited_resources'
-gem 'nested_form', '~> 0.3.2'
+
