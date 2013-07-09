@@ -61,22 +61,45 @@
             = address_form.text_area :comments, :cols => 30, :rows => 5, :class => 'text_area'
 
   %h3 Teléfono(s)
-  = f.fields_for :phones do |phone_form|
-    = phone_form.text_field :number
-    = phone_form.select :phone_type, Phone::TYPES, { :include_blank => "Selecciona ..." }
-    = phone_form.link_to_remove "Eliminar éste teléfono"
-
-  %p
-    = f.link_to_add "Agregar teléfono", :phones
+  %table
+    %thead
+      %tr
+        %th
+          Número
+        %th
+          Tipo
+        %th
+          = f.link_to_add "Agregar teléfono", :phones, "data-target" => "#phones"
+    %tbody#phones
+      = f.fields_for :phones, :wrapper => false do |phone_form|
+        %tr.fields
+          %td
+            = phone_form.text_field :number
+          %td
+            = phone_form.select :phone_type, Phone::TYPES, { :include_blank => "Selecciona ..." }
+          %td
+            = phone_form.link_to_remove "Eliminar éste teléfono"
 
   %h3 Correo Electrónico(s)
-  = f.fields_for :emails do |email_form|
-    = email_form.text_field :email
-    = email_form.select :email_type, Email::TYPES, { :include_blank => "Selecciona ..." }
-    = email_form.link_to_remove "Eliminar éste Correo Electrónico"
+  %table
+    %thead
+      %tr
+        %th
+          Correo Electrónico
+        %th
+          Tipo
+        %th
+          = f.link_to_add "Agregar Correo Electrónico", :emails, "data-target" => "#emails"
+    %tbody#emails
+      = f.fields_for :emails, :wrapper => false do |email_form|
+        %tr.fields
+          %td
+            = email_form.text_field :email
+          %td
+            = email_form.select :email_type, Email::TYPES, { :include_blank => "Selecciona ..." }
+          %td
+            = email_form.link_to_remove "Eliminar éste Correo Electrónico"
 
-  %p
-    = f.link_to_add "Agregar Correo Electrónico", :emails
 
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
