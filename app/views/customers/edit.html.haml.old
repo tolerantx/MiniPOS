@@ -1,5 +1,0 @@
-%h1 Editar Cliente
-
-= render 'form'
-
-= link_to 'Atrás', customers_path

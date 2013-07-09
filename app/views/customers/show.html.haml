@@ -1,0 +1,41 @@
+- model_class = Customer
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.titleize
+
+
+%dl.dl-horizontal
+  %dt
+    %strong
+      = model_class.human_attribute_name(:first_name)
+      = ":"
+  %dd= @customer.first_name
+  %dt
+    %strong
+      = model_class.human_attribute_name(:last_name)
+      = ":"
+  %dd
+    = @customer.last_name
+
+%h4 Teléfono(s)
+- @customer.phones.each do |phone|
+  %p
+    = phone.number
+    = phone.phone_type
+
+%h4 Correo electrónico(s)
+- @customer.emails.each do |email|
+  %p
+    = email.email
+    = email.email_type
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")),
+              customers_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_customer_path(@customer), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")),
+              customer_path(@customer),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger'
+
