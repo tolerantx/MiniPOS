@@ -60,7 +60,10 @@
           .controls
             = address_form.text_area :comments, :cols => 30, :rows => 5, :class => 'text_area'
 
-  %h3 Teléfono(s)
+  %h3
+    Teléfono(s)
+    %span
+      = f.link_to_add "Agregar teléfono", :phones, "data-target" => "#phones"
   %table
     %thead
       %tr
@@ -69,7 +72,6 @@
         %th
           Tipo
         %th
-          = f.link_to_add "Agregar teléfono", :phones, "data-target" => "#phones"
     %tbody#phones
       = f.fields_for :phones, :wrapper => false do |phone_form|
         %tr.fields
@@ -80,7 +82,10 @@
           %td
             = phone_form.link_to_remove "Eliminar éste teléfono"
 
-  %h3 Correo Electrónico(s)
+  %h3
+    Correo Electrónico(s)
+    %span
+      = f.link_to_add "Agregar Correo Electrónico", :emails, "data-target" => "#emails"
   %table
     %thead
       %tr
@@ -89,7 +94,7 @@
         %th
           Tipo
         %th
-          = f.link_to_add "Agregar Correo Electrónico", :emails, "data-target" => "#emails"
+
     %tbody#emails
       = f.fields_for :emails, :wrapper => false do |email_form|
         %tr.fields

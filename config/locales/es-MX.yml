@@ -1,0 +1,11 @@
+es-MX:
+  flash:
+    actions:
+      create:
+        notice: "¡%{resource_name} se Agrego Exitosamente!"
+      update:
+        notice: "¡%{resource_name} se Actualizo Exitosamente!"
+      destroy:
+        notice: "¡%{resource_name} se Elimino Exitosamente!"
+        alert: "%{resource_name} no se pudo Eliminar - Intentalo nuevamente."
+
