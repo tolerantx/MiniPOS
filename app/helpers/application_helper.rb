@@ -25,4 +25,23 @@ module ApplicationHelper
     end
     raw msg
   end
+
+  def error_messages(object)
+    if object.errors.any?
+      header_error = t("errors.header", :number => object.errors.count)
+
+      content_tag(:div, class: "alert alert-error") do
+        link_to("x", "", :class => "close", :'data-dismiss' => "alert") +
+
+        content_tag(:h5, header_error) +
+        content_tag(:ul) do
+          object.errors.full_messages.collect do |message|
+            content_tag(:li, message)
+          end.join.html_safe
+        end
+
+      end
+    end
+
+  end
 end

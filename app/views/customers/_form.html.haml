@@ -1,15 +1,16 @@
 = nested_form_for @customer, :html => { :class => 'form-horizontal' } do |f|
+  = error_messages(@customer)
   .row
     .span4
-      .control-group
+      .control-group.input.string.required
         = f.label :first_name, :class => 'control-label'
         .controls
-          = f.text_field :first_name, :class => 'text_field'
+          = f.text_field :first_name, :class => 'text_field string required'
     .span4
-      .control-group
+      .control-group.input.string.required
         = f.label :last_name, :class => 'control-label'
         .controls
-          = f.text_field :last_name, :class => 'text_field'
+          = f.text_field :last_name, :class => 'text_field string required'
 
   %h3 Dirección
   = f.fields_for :address do |address_form|

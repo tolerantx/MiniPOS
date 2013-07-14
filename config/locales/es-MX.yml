@@ -1,11 +1,13 @@
 es-MX:
+  errors:
+    header: "Se han encontrado %{number} error(es):"
   flash:
     actions:
       create:
-        notice: "¡%{resource_name} se Agrego Exitosamente!"
+        notice: "¡%{resource_name} se Agregó Exitosamente!"
       update:
-        notice: "¡%{resource_name} se Actualizo Exitosamente!"
+        notice: "¡%{resource_name} se Actualizó Exitosamente!"
       destroy:
-        notice: "¡%{resource_name} se Elimino Exitosamente!"
+        notice: "¡%{resource_name} se Eliminó Exitosamente!"
         alert: "%{resource_name} no se pudo Eliminar - Intentalo nuevamente."
 
