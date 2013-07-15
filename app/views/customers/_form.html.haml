@@ -2,12 +2,12 @@
   = error_messages(@customer)
   .row
     .span4
-      .control-group.input.string.required
+      .control-group
         = f.label :first_name, :class => 'control-label'
         .controls
           = f.text_field :first_name, :class => 'text_field string required'
     .span4
-      .control-group.input.string.required
+      .control-group
         = f.label :last_name, :class => 'control-label'
         .controls
           = f.text_field :last_name, :class => 'text_field string required'

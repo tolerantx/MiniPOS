@@ -1,5 +1,9 @@
 class CustomersController <  InheritedResources::Base
 
+  def index
+    @search = params[:search] || {}
+    @customers = Customer.search(params[:search])
+  end
   def new
     @customer = Customer.new(:address => Address.new)
   end

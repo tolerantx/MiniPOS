@@ -12,6 +12,15 @@ class Customer < ActiveRecord::Base
 
   default_scope order("first_name ASC, last_name ASC")
 
+  scope :search, proc { |params|
+    conditions = []
+    terms = !params.nil? ? params[:terms] : ""
+    terms.gsub(/[^a-zA-Z0-9-Ññ\s]/, '').split(' ').each do |criteria|
+      conditions << "first_name like '%#{criteria}%' or last_name like '%#{criteria}%'"
+    end
+    where conditions.join(" AND ")
+  }
+
   def self.build_object
     new.tap do |customer|
       customer.address = Address.new

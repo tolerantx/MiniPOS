@@ -19,6 +19,11 @@ es-MX:
     add_email: "Agregar Correo Electrónico"
     delete_phone: "Eliminar Teléfono"
     delete_email: "Eliminar Correo Electrónico"
+    search: "Buscar"
+    clear: "Limpiar"
+
+  placeholder:
+    search: "Escribe.."
 
   activerecord:
     models:
