@@ -2,31 +2,67 @@
 .page-header
   %h1= t '.title', :default => model_class.model_name.human.titleize
 
+.row.foo
+  .span8
+    %p
+      %strong= model_class.human_attribute_name(:first_name)
+      = @customer.full_name
 
-%dl.dl-horizontal
-  %dt
-    %strong
-      = model_class.human_attribute_name(:first_name)
-      = ":"
-  %dd= @customer.first_name
-  %dt
-    %strong
-      = model_class.human_attribute_name(:last_name)
-      = ":"
-  %dd
-    = @customer.last_name
+    %hr
+    %h4 Dirección
 
-%h4 Teléfono(s)
-- @customer.phones.each do |phone|
-  %p
-    = phone.number
-    = phone.phone_type
+    .row
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:address1)
+          = @customer.address.address1
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:address2)
+          = @customer.address.address2
 
-%h4 Correo electrónico(s)
-- @customer.emails.each do |email|
-  %p
-    = email.email
-    = email.email_type
+    .row
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:state)
+          = @customer.address.state
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:city)
+          = @customer.address.city
+
+    .row
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:town)
+          = @customer.address.town
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:location)
+          = @customer.address.location
+
+    .row
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:zip_code)
+          = @customer.address.zip_code
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:comments)
+          = @customer.address.comments
+
+  .side-bar.span4
+    %h5 Teléfono(s)
+    - @customer.phones.each do |phone|
+      %p
+        = phone.number
+        = phone.phone_type
+
+    %h5 Correo electrónico(s)
+    - @customer.emails.each do |email|
+      %p
+        = email.email
+        = email.email_type
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),

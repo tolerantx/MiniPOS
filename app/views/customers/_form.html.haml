@@ -108,6 +108,5 @@
 
 
   .form-actions
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), customers_path, :class => 'btn'
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")),
-                customers_path, :class => 'btn'
