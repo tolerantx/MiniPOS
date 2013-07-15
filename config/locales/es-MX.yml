@@ -29,12 +29,14 @@ es-MX:
 
   placeholder:
     search: "Escribe.."
+  select_blank: "Selecciona ..."
 
   activerecord:
     models:
       customer: "Cliente"
       category: "Categoría"
       unit: "Unidad"
+      product: "Producto"
 
     attributes:
       customer:
@@ -63,7 +65,23 @@ es-MX:
       unit:
         name: "Nombre"
         created_at: "Fecha creación"
+      product:
+        name: "Nombre"
+        short_name: "Nombre Corto"
+        price: "Precio"
+        unit_id: "Unidad"
+        code: "Código"
+        category_id: "Categoría"
+        comments: "Comentarios"
+        min_stock: "Stock mínimo"
+        max_stock: "Stock máximo"
+        bar_code: "Código de barras"
+        created_at: "Fecha creación"
 
   units:
     index:
       title: "Unidades"
+
+  products:
+    index:
+      title: "Productos"
