@@ -2,7 +2,7 @@
 .page-header
   %h1= t '.title', :default => model_class.model_name.human.titleize
 
-.row.foo
+.row
   .span8
     %p
       %strong= model_class.human_attribute_name(:first_name)
@@ -72,6 +72,6 @@
   = link_to t('.destroy', :default => t("helpers.links.destroy")),
               customer_path(@customer),
               :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
               :class => 'btn btn-danger'
 

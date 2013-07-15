@@ -33,6 +33,9 @@ es-MX:
   activerecord:
     models:
       customer: "Cliente"
+      category: "Categoría"
+      unit: "Unidad"
+
     attributes:
       customer:
         first_name: "Nombre(s)"
@@ -54,4 +57,13 @@ es-MX:
       email:
         email: "Correo Electrónico"
         email_type: "Tipo"
+      category:
+        name: "Nombre"
+        created_at: "Fecha creación"
+      unit:
+        name: "Nombre"
+        created_at: "Fecha creación"
 
+  units:
+    index:
+      title: "Unidades"
