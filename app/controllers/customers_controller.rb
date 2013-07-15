@@ -2,7 +2,7 @@ class CustomersController <  InheritedResources::Base
 
   def index
     @search = params[:search] || {}
-    @customers = Customer.search(params[:search])
+    @customers = Customer.search(params[:search]).paginate(:page => params[:page])
   end
   def new
     @customer = Customer.new(:address => Address.new)

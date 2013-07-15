@@ -35,6 +35,9 @@
                           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                           :class => 'btn btn-mini btn-danger'
 
+    .apple_pagination
+      = will_paginate @customers
+
   .span3
     .text-right
       = link_to t('.new', :default => t("helpers.links.new")), new_customer_path, :class => 'btn btn-primary'
