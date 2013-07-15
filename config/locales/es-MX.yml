@@ -11,3 +11,37 @@ es-MX:
         notice: "¡%{resource_name} se Eliminó Exitosamente!"
         alert: "%{resource_name} no se pudo Eliminar - Intentalo nuevamente."
 
+  labels:
+    select: "Selecciona ..."
+    general_information: "Información general"
+    total_records: "Total de registros:"
+    add_phone: "Agregar Teléfono"
+    add_email: "Agregar Correo Electrónico"
+    delete_phone: "Eliminar Teléfono"
+    delete_email: "Eliminar Correo Electrónico"
+
+  activerecord:
+    models:
+      customer: "Cliente"
+    attributes:
+      customer:
+        first_name: "Nombre(s)"
+        last_name: "Apellido(s)"
+        created_at: "Fecha creación"
+        full_name: "Nombre"
+      address:
+        address1: "Dirección"
+        address2: "Colonia"
+        state: "Estado"
+        city: "Ciudad"
+        town: "Municipio"
+        location: "Localidad"
+        zip_code: "Código postal"
+        comments: "Observaciones"
+      phone:
+        number: "Número"
+        phone_type: "Tipo"
+      email:
+        email: "Correo Electrónico"
+        email_type: "Tipo"
+

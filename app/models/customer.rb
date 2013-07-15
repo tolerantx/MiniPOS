@@ -10,6 +10,8 @@ class Customer < ActiveRecord::Base
   accepts_nested_attributes_for :phones, :allow_destroy => true
   accepts_nested_attributes_for :emails, :allow_destroy => true
 
+  default_scope order("first_name ASC, last_name ASC")
+
   def self.build_object
     new.tap do |customer|
       customer.address = Address.new
