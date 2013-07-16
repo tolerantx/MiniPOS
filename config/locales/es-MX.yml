@@ -40,6 +40,7 @@ es-MX:
     products: "Productos"
     categories: "Categorias"
     units: "Unidades"
+    tickets: "Tickets"
 
   activerecord:
     models:
@@ -47,6 +48,7 @@ es-MX:
       category: "Categoría"
       unit: "Unidad"
       product: "Producto"
+      ticket: "Ticket"
 
     attributes:
       customer:
@@ -88,12 +90,18 @@ es-MX:
         existence: "Existencia"
         bar_code: "Código de barras"
         created_at: "Fecha creación"
+      ticket:
+        customer_id: "Cliente"
+        total: "Total"
+        status: "Estado"
 
   customers:
     index:
       title: "Clientes"
     new:
       title: "Nuevo cliente"
+    create:
+      title: "Crear cliente"
     edit:
       title: "Editar "
     show:
@@ -104,6 +112,8 @@ es-MX:
       title: "Categorias"
     new:
       title: "Nueva categoria"
+    create:
+      title: "Crear categoria"
     edit:
       title: "Editar "
     show:
@@ -114,6 +124,8 @@ es-MX:
       title: "Unidades"
     new:
       title: "Nueva unidad"
+    create:
+      title: "Crear unidad"
     edit:
       title: "Editar "
     show:
@@ -124,7 +136,21 @@ es-MX:
       title: "Productos"
     new:
       title: "Nuevo producto"
+    create:
+      title: "Crear producto"
     edit:
       title: "Editar "
     show:
       title: "Producto "
+
+  tickets:
+    index:
+      title: "Tickets"
+    new:
+      title: "Nuevo ticket"
+    create:
+      title: "Crear ticket"
+    edit:
+      title: "Editar "
+    show:
+      title: "Ticket "

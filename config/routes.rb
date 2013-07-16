@@ -1,8 +1,8 @@
 MiniPos::Application.routes.draw do
+
+  resources :tickets
   resources :units
-
   resources :categories
-
   resources :products
 
   # get "customers/index"

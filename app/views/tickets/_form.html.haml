@@ -1,0 +1,25 @@
+= form_for(@ticket) do |f|
+  .row
+    = error_messages(@ticket)
+    .span8
+      &nbsp;
+    .span4
+      .block
+        .control-group
+          = f.label :customer_id, :class => 'control-label'
+          .controls
+            = f.collection_select :customer_id, Customer.all, :id, :full_name, {:include_blank => t("select_blank")}
+        .control-group
+          = f.label :total, :class => 'control-label'
+          .controls
+            = f.text_field :total
+        .control-group
+          = f.label :status, :class => 'control-label'
+          .controls
+            = f.select :status, Ticket::STATUS, {:include_blank => t("select_blank")}
+
+  .row
+    .span12
+      .form-actions
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), categories_path, :class => 'btn'
+        = f.submit nil, :class => 'btn btn-primary'

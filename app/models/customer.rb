@@ -3,6 +3,7 @@ class Customer < ActiveRecord::Base
   has_one :address, as: :owner, dependent: :destroy
   has_many :phones, as: :owner, dependent: :destroy
   has_many :emails, as: :owner, dependent: :destroy
+  has_many :tickets
 
   validates :first_name, :last_name, :presence => true
 

@@ -51,18 +51,19 @@
           %strong= Address.human_attribute_name(:comments)
           = @customer.address.comments
 
-  .side-bar.span4
-    %h5 Teléfono(s)
-    - @customer.phones.each do |phone|
-      %p
-        = phone.number
-        = phone.phone_type
+  .span4
+    .block
+      %h5 Teléfono(s)
+      - @customer.phones.each do |phone|
+        %p
+          = phone.number
+          = phone.phone_type
 
-    %h5 Correo electrónico(s)
-    - @customer.emails.each do |email|
-      %p
-        = email.email
-        = email.email_type
+      %h5 Correo electrónico(s)
+      - @customer.emails.each do |email|
+        %p
+          = email.email
+          = email.email_type
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),

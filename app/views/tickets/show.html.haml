@@ -1,0 +1,29 @@
+- model_class = Ticket
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.titleize
+
+.row
+  .span8
+
+  .span4
+    .block
+      %p
+        %strong= Customer.human_attribute_name(:full_name)
+        = @ticket.customer.full_name if @ticket.customer
+      %p
+        %strong= model_class.human_attribute_name(:total)
+        = @ticket.total
+      %p
+        %strong= model_class.human_attribute_name(:status)
+        = @ticket.status
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")),
+              tickets_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_ticket_path(@ticket), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")),
+              ticket_path(@ticket),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
+              :class => 'btn btn-danger'
