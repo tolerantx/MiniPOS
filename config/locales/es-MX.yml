@@ -1,4 +1,6 @@
 es-MX:
+  system:
+    name: "Sistema"
   errors:
     header: "Se han encontrado %{number} error(es):"
   flash:
@@ -29,7 +31,15 @@ es-MX:
 
   placeholder:
     search: "Escribe.."
+
   select_blank: "Selecciona ..."
+
+  navigation:
+    customers: "Clientes"
+    administration: "Administración"
+    products: "Productos"
+    categories: "Categorias"
+    units: "Unidades"
 
   activerecord:
     models:
@@ -75,13 +85,46 @@ es-MX:
         comments: "Comentarios"
         min_stock: "Stock mínimo"
         max_stock: "Stock máximo"
+        existence: "Existencia"
         bar_code: "Código de barras"
         created_at: "Fecha creación"
+
+  customers:
+    index:
+      title: "Clientes"
+    new:
+      title: "Nuevo cliente"
+    edit:
+      title: "Editar "
+    show:
+      title: "Cliente "
+
+  categories:
+    index:
+      title: "Categorias"
+    new:
+      title: "Nueva categoria"
+    edit:
+      title: "Editar "
+    show:
+      title: "Categoria "
 
   units:
     index:
       title: "Unidades"
+    new:
+      title: "Nueva unidad"
+    edit:
+      title: "Editar "
+    show:
+      title: "Unidad "
 
   products:
     index:
       title: "Productos"
+    new:
+      title: "Nuevo producto"
+    edit:
+      title: "Editar "
+    show:
+      title: "Producto "

@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :code
       t.integer :category_id
       t.text :comments
+      t.decimal :existence, :precision => 10, :scale => 2
       t.integer :min_stock
       t.integer :max_stock
       t.string :bar_code

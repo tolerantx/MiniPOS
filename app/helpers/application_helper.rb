@@ -49,4 +49,8 @@ module ApplicationHelper
       content_tag(:div, will_paginate(object), :class => 'apple_pagination')
     end
   end
+
+  def title_page
+    "#{t("#{controller_name}.#{action_name}.title")} | #{t("activerecord.models.#{controller_name.to_s.singularize}",:count => 2)} - #{t('system.name')}"
+  end
 end

@@ -4,8 +4,9 @@ class Product < ActiveRecord::Base
 
   validates :name, :price, :presence => true
   validates :price, numericality: { greater_than: 0 }
-  validates :min_stock, numericality: { only_integer: true, greater_than: 0 }
-  validates :max_stock, numericality: { only_integer: true, greater_than_or_equal_to: :min_stock }
+  validates :min_stock, numericality: { only_integer: true, greater_than: 0, allow_nil: true }
+  validates :max_stock, numericality: { only_integer: true, greater_than_or_equal_to: :min_stock, allow_nil: true }
+  validates :existence, numericality: { allow_nil: true }
 
   default_scope { order("name ASC") }
 

@@ -51,10 +51,16 @@
   .row
     .span4
       .control-group
+        = f.label :existence, :class => 'control-label'
+        .controls
+          = f.text_field :existence, :class => 'text_field'
+    .span4
+      .control-group
         = f.label :bar_code, :class => 'control-label'
         .controls
           = f.text_field :bar_code, :class => 'text_field'
-    .span4
+  .row
+    .span8
       .control-group
         = f.label :comments, :class => 'control-label'
         .controls
