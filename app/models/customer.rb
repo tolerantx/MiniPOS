@@ -10,9 +10,9 @@ class Customer < ActiveRecord::Base
   accepts_nested_attributes_for :phones, :allow_destroy => true
   accepts_nested_attributes_for :emails, :allow_destroy => true
 
-  default_scope { order("first_name ASC, last_name ASC") }
+  default_scope { order(:first_name, :last_name) }
 
-  scope :search, proc { |params|
+  scope :search, ->(params) {
     conditions = []
     terms = !params.nil? ? params[:terms] : ""
     terms.gsub(/[^a-zA-Z0-9\-Ññ\s]/, '').split(' ').each do |criteria|

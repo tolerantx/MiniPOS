@@ -2,7 +2,7 @@ class CustomersController <  InheritedResources::Base
 
   def index
     @search = params[:search] || {}
-    @customers = Customer.search(params[:search]).paginate(:page => params[:page])
+    @customers = Customer.search(params[:search]).paginate(:page => params[:page]).select("customers.*, count(customers.id) as customers_count")
   end
 
   def new

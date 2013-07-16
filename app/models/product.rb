@@ -8,9 +8,9 @@ class Product < ActiveRecord::Base
   validates :max_stock, numericality: { only_integer: true, greater_than_or_equal_to: :min_stock, allow_nil: true }
   validates :existence, numericality: { allow_nil: true }
 
-  default_scope { order("name ASC") }
+  default_scope { order(:name) }
 
-  scope :search, proc { |params|
+  scope :search, ->(params) {
     conditions = []
     terms = !params.nil? ? params[:terms] : ""
     terms.gsub(/[^a-zA-Z0-9\-Ññ\s]/, '').split(' ').each do |criteria|

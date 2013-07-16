@@ -3,9 +3,9 @@ class Unit < ActiveRecord::Base
 
   validates :name, :presence => true
 
-  default_scope { order("name ASC") }
+  default_scope { order(:name) }
 
-  scope :search, proc { |params|
+  scope :search, ->(params) {
     conditions = []
     terms = !params.nil? ? params[:terms] : ""
     terms.gsub(/[^a-zA-Z0-9\-Ññ\s]/, '').split(' ').each do |criteria|
