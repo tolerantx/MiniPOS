@@ -27,7 +27,7 @@
             %td
               = ticket.customer.full_name if ticket.customer
             %td
-              = ticket.total
+              = number_to_currency ticket.total
             %td=l ticket.created_at, :format => :short
             %td
               = link_to t('.show', :default => t("helpers.links.show")),

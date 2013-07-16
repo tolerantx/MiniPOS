@@ -25,7 +25,7 @@
             %td
               = link_to product.code, product_path(product)
             %td= product.name
-            %td= product.price
+            %td= number_to_currency product.price
             %td=l product.created_at, :format => :short
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
