@@ -80,7 +80,7 @@
   window.nestedFormEvents = new NestedFormEvents();
   $(document)
     .delegate('form a.add_nested_fields',    'click', nestedFormEvents.addFields)
-    .delegate('form a.remove_nested_fields', 'click', nestedFormEvents.removeFields);
+    .delegate('form a.remove_nested_fields', 'click', nestedFormEvents.removeFields)
 })(jQuery);
 
 // http://plugins.jquery.com/project/closestChild

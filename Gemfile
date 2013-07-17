@@ -19,11 +19,12 @@ gem 'rails-i18n', '~> 4.0.0.pre'
 gem 'will_paginate', '~> 3.0.4'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '~> 3.0.2'
+gem 'jquery-rails', '~> 3.0.4'
+gem 'jquery-ui-rails', '~> 4.0.3'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '~> 1.2.0'
 
+gem 'turbolinks', '~> 1.2.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -33,7 +34,7 @@ group :doc do
 end
 
 group :development do
-  gem 'rack-mini-profiler', '~> 0.1.27'
+  # gem 'rack-mini-profiler', '~> 0.1.27'
 end
 
 # Use ActiveModel has_secure_password

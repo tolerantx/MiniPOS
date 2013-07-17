@@ -3,7 +3,11 @@ MiniPos::Application.routes.draw do
   resources :tickets
   resources :units
   resources :categories
-  resources :products
+  resources :products do
+    collection do
+      get 'search_code'
+    end
+  end
 
   # get "customers/index"
   # The priority is based upon order of creation: first created -> highest priority.

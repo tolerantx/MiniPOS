@@ -94,6 +94,13 @@ es-MX:
         customer_id: "Cliente"
         total: "Total"
         status: "Estado"
+      item:
+        quantity: "Cantidad"
+        unit: "Unidad"
+        code: "Código"
+        description: "Descripción"
+        unit_value: "Valor unitario"
+        amount: "Monto"
 
   customers:
     index:

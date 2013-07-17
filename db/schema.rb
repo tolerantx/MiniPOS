@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130716204614) do
+ActiveRecord::Schema.define(version: 20130717155847) do
 
   create_table "addresses", force: true do |t|
     t.string   "address1"
@@ -46,6 +46,18 @@ ActiveRecord::Schema.define(version: 20130716204614) do
     t.string   "email_type"
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "ticket_id"
+    t.decimal  "quantity",    precision: 10, scale: 2
+    t.string   "unit"
+    t.string   "code"
+    t.string   "description"
+    t.decimal  "unit_value",  precision: 10, scale: 2
+    t.decimal  "amount",      precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end

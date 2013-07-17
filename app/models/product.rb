@@ -18,4 +18,9 @@ class Product < ActiveRecord::Base
     end
     where conditions.join(" AND ")
   }
+
+  def self.terms_code_for(prefix)
+    suggestions = where("code like ?", "#{prefix}_%")
+    suggestions.limit(10).collect { |p| { :label => p.code, :value => p.code, :product => {:code => p.code, :description => p.name, :unit_value => p.price } } }
+  end
 end

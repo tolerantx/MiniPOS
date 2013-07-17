@@ -4,6 +4,10 @@ class ProductsController < InheritedResources::Base
     @products = Product.search(params[:search]).paginate(:page => params[:page])
   end
 
+  def search_code
+    render json: Product.terms_code_for(params[:term])
+  end
+
   private
 
   def permitted_params
