@@ -8,6 +8,10 @@ class ProductsController < InheritedResources::Base
     render json: Product.terms_code_for(params[:term])
   end
 
+  def search_name
+    render json: Product.terms_name_for(params[:term])
+  end
+
   private
 
   def permitted_params

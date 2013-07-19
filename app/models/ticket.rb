@@ -20,4 +20,8 @@ class Ticket < ActiveRecord::Base
     where conditions.join(" AND ")
   }
 
+  def total_tickets
+    self.items.collect().sum {|t| t.amount.to_f || 0.00 }
+  end
+
 end

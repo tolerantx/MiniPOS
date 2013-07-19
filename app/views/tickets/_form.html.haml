@@ -10,9 +10,9 @@
             %th
               = Item.human_attribute_name(:code)
             %th
-              = Item.human_attribute_name(:quantity)
-            %th
               = Item.human_attribute_name(:description)
+            %th
+              = Item.human_attribute_name(:quantity)
             %th
               = Item.human_attribute_name(:unit_value)
             %th
@@ -24,21 +24,21 @@
             %td
               = item.text_field :code, :class => 'input-mini item_code', :'data-search-url' => '/products/search_code'
             %td
-              = item.text_field :quantity, :class => 'input-mini item_quantity'
+              = item.text_field :description, :class => 'item_description'
             %td
-              %span.input-xlarge.uneditable-input.item_description
-              = item.hidden_field :description, :class => 'item_description'
-            %td
-              .input-prepend
-                %span.add-on $
-                = item.text_field :unit_value, :class => 'input-small item_unit_value'
+              = item.text_field :quantity, :class => 'input-mini item_quantity', 'data-only-number' => true
             %td
               .input-prepend
                 %span.add-on $
-                %span.input-small.uneditable-input.item_amount
+                = item.text_field :unit_value, :class => 'input-small item_unit_value text-right', 'data-only-number' => true
+            %td
+              .input-prepend
+                %span.add-on $
+                %span.input-small.uneditable-input.item_amount.text-right
+                  = "%.2f" % item.object.amount unless item.object.amount.nil?
                 = item.hidden_field :amount, :class => 'item_amount'
             %td
-              = item.link_to_remove '', :class => 'icon-remove', :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))
+              = link_to '', '#', :class => 'icon-remove remove_item', :'data-message' => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))
 
       / .control-group
       /   = f.label :customer_id, :class => 'control-label'
@@ -58,6 +58,11 @@
 
   .span4
     .block
+      %p
+        %strong= t("labels.total")
+        %span#total
+          = "$ #{@ticket.total_tickets}" if @ticket.total_tickets
+
       = form_tag '#', :id => 'ticket-detail-form', :class => 'form-inline' do
         / .control-group
         /   Código

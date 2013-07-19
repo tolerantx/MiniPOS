@@ -23,6 +23,7 @@ es-MX:
     delete_email: "Eliminar Correo Electrónico"
     search: "Buscar"
     clear: "Limpiar"
+    total: "Total"
 
   will_paginate:
     previous_label: "&#8592; Anterior"

@@ -23,4 +23,9 @@ class Product < ActiveRecord::Base
     suggestions = where("code like ?", "#{prefix}_%")
     suggestions.limit(10).collect { |p| { :label => p.code, :value => p.code, :product => {:code => p.code, :description => p.name, :unit_value => p.price } } }
   end
+
+  def self.terms_name_for(prefix)
+    suggestions = where("name like ?", "#{prefix}_%")
+    suggestions.limit(10).collect { |p| { :label => p.name, :value => p.name, :product => {:code => p.code, :description => p.name, :unit_value => p.price } } }
+  end
 end
