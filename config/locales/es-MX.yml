@@ -3,6 +3,8 @@ es-MX:
     name: "Sistema"
   errors:
     header: "Se han encontrado %{number} error(es):"
+    ticket:
+      product_presence: "El ticket debe contener al menos un concepto"
   flash:
     actions:
       create:
@@ -24,6 +26,7 @@ es-MX:
     search: "Buscar"
     clear: "Limpiar"
     total: "Total"
+    add_item: "Agregar Concepto"
 
   will_paginate:
     previous_label: "&#8592; Anterior"
@@ -42,6 +45,12 @@ es-MX:
     categories: "Categorias"
     units: "Unidades"
     tickets: "Tickets"
+
+  ticket_state:
+    created: "Creado"
+    canceled: "Cancelado"
+
+
 
   activerecord:
     models:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130717155847) do
+ActiveRecord::Schema.define(version: 20130719212232) do
 
   create_table "addresses", force: true do |t|
     t.string   "address1"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20130717155847) do
   create_table "tickets", force: true do |t|
     t.integer  "customer_id"
     t.decimal  "total"
-    t.string   "status"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
