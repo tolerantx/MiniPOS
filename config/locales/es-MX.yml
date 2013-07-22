@@ -28,6 +28,7 @@ es-MX:
     total: "Total"
     add_item: "Agregar Concepto"
     categories: "Categorias"
+    suppliers: "Proveedores"
 
   will_paginate:
     previous_label: "&#8592; Anterior"

@@ -54,6 +54,12 @@
         - @product.categories.each do |category|
           %li= category.name
 
+      %h5= t("labels.suppliers")
+
+      %ul.unstyled
+        - @product.suppliers.each do |supplier|
+          %li= supplier.name
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),
               products_path, :class => 'btn'

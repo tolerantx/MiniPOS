@@ -1,5 +1,5 @@
 class CategoriesProductsTable < ActiveRecord::Migration
-    def self.up
+  def self.up
     create_table :categories_products, :id => false do |t|
         t.references :category
         t.references :product
