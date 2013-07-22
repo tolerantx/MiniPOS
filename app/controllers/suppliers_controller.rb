@@ -15,6 +15,7 @@ class SuppliersController < InheritedResources::Base
       params.permit(:supplier => [
         :id,
         :name,
+        :product_ids => [],
         address_attributes: [:address1, :address2, :state, :city, :town, :location, :zip_code, :comments],
         phones_attributes: [:number, :phone_type, :_destroy, :id],
         emails_attributes: [:email, :email_type, :_destroy, :id]

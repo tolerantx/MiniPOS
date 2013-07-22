@@ -51,6 +51,18 @@
           %strong= Address.human_attribute_name(:comments)
           = @supplier.address.comments
 
+    .row
+      .span8
+        %h4= t("labels.products")
+
+        %table
+          - size = @supplier.products.count >= 3 ? @supplier.products.count : 3
+          - @supplier.products.in_groups_of((size/3).ceil).transpose.each do |row|
+            %tr
+              - row.each do |product|
+                &nbsp;
+                %td.span2= product.name if product
+
   .span4
     .block
       %h5 Teléfono(s)

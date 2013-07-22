@@ -3,6 +3,7 @@ class Supplier < ActiveRecord::Base
   has_many :phones, as: :owner, dependent: :destroy
   has_many :emails, as: :owner, dependent: :destroy
   has_many :tickets
+  has_and_belongs_to_many :products
 
   validates :name, :presence => true
 

@@ -29,6 +29,7 @@ es-MX:
     add_item: "Agregar Concepto"
     categories: "Categorias"
     suppliers: "Proveedores"
+    products: "Productos"
 
   will_paginate:
     previous_label: "&#8592; Anterior"

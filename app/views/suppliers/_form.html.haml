@@ -101,6 +101,18 @@
           %td
             = email_form.link_to_remove t("labels.delete_email")
 
+  %h3= t("labels.products")
+
+  %table
+    - size = Product.count >= 3 ? Product.count : 3
+    - Product.all.in_groups_of((size/3).ceil).transpose.each do |row|
+      %tr
+        - row.each do |product|
+          %td.span2
+            - if product
+              = hidden_field_tag "supplier[product_ids][]", nil
+              = check_box_tag "supplier[product_ids][]", product.id, @supplier.product_ids.include?(product.id), id: dom_id(product)
+              = product.name
 
   .form-actions
     = link_to t('.cancel', :default => t("helpers.links.cancel")), suppliers_path, :class => 'btn'
