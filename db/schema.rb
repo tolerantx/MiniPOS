@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130719212232) do
+ActiveRecord::Schema.define(version: 20130722144215) do
 
   create_table "addresses", force: true do |t|
     t.string   "address1"
@@ -83,6 +83,12 @@ ActiveRecord::Schema.define(version: 20130719212232) do
     t.integer  "min_stock"
     t.integer  "max_stock"
     t.string   "bar_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "suppliers", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,6 @@
 MiniPos::Application.routes.draw do
 
+  resources :suppliers
   resources :tickets
   resources :units
   resources :categories
