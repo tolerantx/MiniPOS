@@ -27,6 +27,7 @@ es-MX:
     clear: "Limpiar"
     total: "Total"
     add_item: "Agregar Concepto"
+    categories: "Categorias"
 
   will_paginate:
     previous_label: "&#8592; Anterior"

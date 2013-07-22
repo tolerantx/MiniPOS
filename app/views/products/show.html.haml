@@ -29,29 +29,30 @@
           = @product.code
       .span4
         %p
-          %strong= Product.human_attribute_name(:category_id)
-          = @product.category.name if @product.category
+          %strong= Product.human_attribute_name(:bar_code)
+          = @product.bar_code
+
     .row
-      .span4
-        %p
-          %strong= Product.human_attribute_name(:comments)
-          = @product.comments
       .span4
         %p
           %strong= Product.human_attribute_name(:min_stock)
           = @product.min_stock
-    .row
       .span4
         %p
           %strong= Product.human_attribute_name(:max_stock)
           = @product.max_stock
-      .span4
+    .row
+      .span8
         %p
-          %strong= Product.human_attribute_name(:bar_code)
-          = @product.bar_code
-
+          %strong= Product.human_attribute_name(:comments)
+          = @product.comments
   .span4
     .block
+      %h5= t("labels.categories")
+
+      %ul.unstyled
+        - @product.categories.each do |category|
+          %li= category.name
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),

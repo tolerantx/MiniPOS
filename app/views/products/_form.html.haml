@@ -28,11 +28,6 @@
           .controls
             = f.text_field :existence, :class => 'text_field span3'
 
-        .control-group
-          = f.label :comments, :class => 'control-label'
-          .controls
-            = f.text_area :comments, :class => 'text_field span3'
-
       .span4
         .control-group
           = f.label :short_name, :class => 'control-label'
@@ -45,9 +40,9 @@
             = f.text_field :code, :class => 'text_field span3'
 
         .control-group
-          = f.label :category_id, :class => 'control-label'
+          = f.label :bar_code, :class => 'control-label'
           .controls
-            = f.collection_select :category_id, Category.all, :id, :name, {:include_blank => t("select_blank")}, :class => 'text_field span3'
+            = f.text_field :bar_code, :class => 'text_field span3'
 
         .control-group
           = f.label :max_stock, :class => 'control-label'
@@ -55,12 +50,19 @@
             = f.text_field :max_stock, :class => 'text_field span3'
 
         .control-group
-          = f.label :bar_code, :class => 'control-label'
+          = f.label :comments, :class => 'control-label'
           .controls
-            = f.text_field :bar_code, :class => 'text_field span3'
+            = f.text_area :comments, :class => 'text_field span3'
 
       .span4
-        %h5 Categorías
+        %h5= t("labels.categories")
+
+        %ul.unstyled
+          - Category.all.each do |category|
+            %li
+              = hidden_field_tag "product[category_ids][]", nil
+              = check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id), id: dom_id(category)
+              = category.name
 
     .row
       .form-actions
