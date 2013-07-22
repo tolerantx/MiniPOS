@@ -19,7 +19,9 @@ es-MX:
     select: "Selecciona ..."
     general_information: "Información general"
     total_records: "Total de registros:"
+    phone: "Teléfono(s)"
     add_phone: "Agregar Teléfono"
+    email: "Correo Electrónico(s)"
     add_email: "Agregar Correo Electrónico"
     delete_phone: "Eliminar Teléfono"
     delete_email: "Eliminar Correo Electrónico"
@@ -93,7 +95,7 @@ es-MX:
       product:
         name: "Nombre"
         short_name: "Nombre Corto"
-        price: "Precio"
+        price: "Precio unitario"
         unit_id: "Unidad"
         code: "Código"
         category_id: "Categoría"
@@ -103,6 +105,8 @@ es-MX:
         existence: "Existencia"
         bar_code: "Código de barras"
         created_at: "Fecha creación"
+        quantity_package: "Unidades por caja"
+        purchase_price: "Precio de compra"
       ticket:
         customer_id: "Cliente"
         total: "Total"

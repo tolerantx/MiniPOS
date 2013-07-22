@@ -9,6 +9,11 @@
             = f.text_field :name, :class => 'text_field span3'
 
         .control-group
+          = f.label :code, :class => 'control-label'
+          .controls
+            = f.text_field :code, :class => 'text_field span3'
+
+        .control-group
           = f.label :price, :class => 'control-label'
           .controls
             = f.text_field :price, :class => 'text_field span3'
@@ -35,14 +40,19 @@
             = f.text_field :short_name, :class => 'text_field span3'
 
         .control-group
-          = f.label :code, :class => 'control-label'
-          .controls
-            = f.text_field :code, :class => 'text_field span3'
-
-        .control-group
           = f.label :bar_code, :class => 'control-label'
           .controls
             = f.text_field :bar_code, :class => 'text_field span3'
+
+        .control-group
+          = f.label :purchase_price, :class => 'control-label'
+          .controls
+            = f.text_field :purchase_price, :class => 'text_field span3'
+
+        .control-group
+          = f.label :quantity_package, :class => 'control-label'
+          .controls
+            = f.text_field :quantity_package, :class => 'text_field span3'
 
         .control-group
           = f.label :max_stock, :class => 'control-label'

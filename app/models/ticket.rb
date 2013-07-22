@@ -25,6 +25,10 @@ class Ticket < ActiveRecord::Base
     event :cancel do
       transition :created => :canceled
     end
+
+    event :deliver do
+      transition :created => :delivered
+    end
   end
 
   def total_tickets
@@ -34,8 +38,6 @@ class Ticket < ActiveRecord::Base
   private
 
   def calculate_items
-    puts "*"*30
-    puts self.items.size
     errors.add(:base, I18n.t("errors.ticket.product_presence")) if self.items.size.eql?(0)
     self.total = total_tickets
   end

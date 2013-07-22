@@ -57,9 +57,10 @@
             = address_form.text_area :comments, :cols => 30, :rows => 5, :class => 'text_area'
 
   %h3
-    Teléfono(s)
+    = t("labels.phone")
     %span
       = f.link_to_add t("labels.add_phone"), :phones, "data-target" => "#phones"
+
   %table
     %thead
       %tr
@@ -79,7 +80,7 @@
             = phone_form.link_to_remove t("labels.delete_phone")
 
   %h3
-    Correo Electrónico(s)
+    = t("labels.email")
     %span
       = f.link_to_add t("labels.add_email"), :emails, "data-target" => "#emails"
   %table
