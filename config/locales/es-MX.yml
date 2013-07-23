@@ -32,6 +32,7 @@ es-MX:
     categories: "Categorias"
     suppliers: "Proveedores"
     products: "Productos"
+    customer_information: "Información del Cliente"
 
   will_paginate:
     previous_label: "&#8592; Anterior"
@@ -64,6 +65,7 @@ es-MX:
       product: "Producto"
       ticket: "Ticket"
       supplier: "Proveedor"
+      version: "Bitácora"
 
     attributes:
       customer:
@@ -111,6 +113,7 @@ es-MX:
         customer_id: "Cliente"
         total: "Total"
         status: "Estado"
+        customer_name: "Cliente"
       item:
         quantity: "Cantidad"
         unit: "Unidad"
@@ -121,6 +124,12 @@ es-MX:
       supplier:
         name: "Nombre"
         created_at: "Fecha creación"
+      version:
+        item_type: "Tipo"
+        item_id: "Id"
+        event: "Evento"
+        whodunnit: "Usuario"
+        created_at: "Fecha"
 
   customers:
     index:
@@ -193,3 +202,7 @@ es-MX:
       title: "Editar "
     show:
       title: "Proveedor "
+
+  versions:
+    index:
+      title: "Bitácora"

@@ -1,6 +1,19 @@
 jQuery ->
-  # $('#ticket-code').itemAutocomplete()
+  # ====================================================================
+  # This block is to charge again when down no load turbolinks the DOM
+  # ====================================================================
+  ready = ->
+    $("tr.fields").livequery ->
+      $(this).watch 'display', ->
+        total_calculation()
 
+  $(document).ready(ready)
+  $(document).on('page:load', ready)
+
+
+  # ====================================================================
+  # Search code and description of the products
+  # ====================================================================
   $('.item_code').livequery ->
     $(this).autocomplete
       source: "/products/search_code"
@@ -42,21 +55,18 @@ jQuery ->
   # ====================================================================
   # This methods remove manually item of the form
   # ====================================================================
-  $('.remove_item').livequery ->
-    $(this).click ->
-      message = $(this).attr('data-message')
-      if confirm(message)
-        $(this).closest('.fields').remove()
-        total_calculation()
-
-      return false
+  $("tr.fields").livequery ->
+    $(this).watch 'display', ->
+      total_calculation()
 
   # ====================================================================
   # This methods calculate the total of the ticket
   # ====================================================================
   total_calculation = ->
     total = 0
-    $.each($('input.item_amount'), ->
+    item_amounts = $('#items tr[style!="display: none;"]').find('input.item_amount')
+
+    $.each(item_amounts, ->
       total += parseFloat(this.value) unless this.value is ""
     )
     $('span#total').text('$ ' + total.toFixed(2))
@@ -84,5 +94,29 @@ jQuery ->
 
     # Add new item to the form with F2 key
     $('a.add_nested_fields').trigger('click') if keynum is 124 #113
+
+  # ====================================================================
+  # Customer autocomplete
+  # ====================================================================
+  # $('#ticket_customer_name').myAutocomplete()
+  $('#ticket_customer_name').livequery ->
+    $(this).autocomplete
+      source: $(this).attr('data-search-url')
+
+      change: (event, ui) ->
+        if ui.item is not null
+          $(this).parent().find('input.hidden-id').val(ui.item.id);
+          $('#customer_name').html(ui.item.label)
+          $('#customer_address').html(ui.item.customer.basic_address)
+        else
+          $(this).parent().find('input.hidden-id').val('');
+          $('#customer_name').html('')
+          $('#customer_address').html('')
+
+      select: (event, ui) ->
+        $(this).parent().find('input.hidden-id').val(ui.item.id);
+        $('#customer_name').html(ui.item.label)
+        $('#customer_address').html(ui.item.customer.basic_address)
+
 
 

@@ -1,16 +1,20 @@
 class Ticket < ActiveRecord::Base
-  # STATUS = %w{Activo Inactivo}
 
-  has_many :items
+  has_many :items, dependent: :destroy
   belongs_to :customer
 
   validates :total, :presence => true
+  validate :has_items?
+  accepts_nested_attributes_for :items, :allow_destroy => true
 
-  accepts_nested_attributes_for :items
+  default_scope { order(id: :desc) }
 
-  default_scope order(id: :desc)
+  before_validation :set_values
+  after_commit :update_values
 
-  before_validation :calculate_items
+  has_paper_trail
+
+  attr_accessor :customer_id, :customer_name
 
   scope :search, ->(params) {
     conditions = []
@@ -32,14 +36,21 @@ class Ticket < ActiveRecord::Base
   end
 
   def total_tickets
-    self.items.collect().sum {|t| t.amount.to_f || 0.00 }
+    items.collect().sum {|t| t.amount.to_f || 0.00 }
   end
 
   private
 
-  def calculate_items
+  def has_items?
     errors.add(:base, I18n.t("errors.ticket.product_presence")) if self.items.size.eql?(0)
+  end
+
+  def set_values
     self.total = total_tickets
+  end
+
+  def update_values
+    self.update_attributes :total => total_tickets
   end
 
 end

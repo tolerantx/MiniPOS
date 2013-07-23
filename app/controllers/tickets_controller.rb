@@ -8,10 +8,11 @@ class TicketsController < InheritedResources::Base
 
   def permitted_params
     params.permit(:ticket => [
+      :id,
       :customer_id,
       :total,
       :status,
-      items_attributes: [:quantity, :unit, :code, :description, :unit_value, :amount]
+      items_attributes: [:quantity, :unit, :code, :description, :unit_value, :amount, :_destroy, :id]
     ])
   end
 

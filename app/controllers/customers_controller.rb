@@ -9,6 +9,10 @@ class CustomersController < InheritedResources::Base
     @customer = Customer.new(:address => Address.new)
   end
 
+  def search_name
+    render json: Customer.terms_name_for(params[:term])
+  end
+
   private
 
     def permitted_params

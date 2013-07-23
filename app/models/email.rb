@@ -5,4 +5,6 @@ class Email < ActiveRecord::Base
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
   belongs_to :owner, :polymorphic => true
+
+  has_paper_trail
 end

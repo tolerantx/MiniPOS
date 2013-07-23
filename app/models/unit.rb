@@ -3,6 +3,8 @@ class Unit < ActiveRecord::Base
 
   validates :name, :presence => true
 
+  has_paper_trail
+
   default_scope { order(:name) }
 
   scope :search, ->(params) {
