@@ -8,8 +8,12 @@
       %label
         %strong= t("labels.search")
       = text_field_tag 'search[terms]', @search[:terms], :placeholder => t("placeholder.search")
+      %label
+        %strong= t("labels.state")
+      = select_tag 'search[state]', options_for_select(Ticket::STATES), { :include_blank => true }
       = submit_tag 'Buscar', :id => 'tickets-form-button', :class => 'btn btn-small btn-primary'
       = link_to t('labels.clear'), tickets_path, :class => 'btn btn-small'
+
 
     %table.table.table-striped.table-condensed.table-hover
       %thead
@@ -32,6 +36,14 @@
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           ticket_path(ticket), :class => 'btn btn-mini btn-warning'
+              = link_to t('ticket_state.deliver'),
+                          deliver_ticket_path(ticket),
+                          :confirm => t('ticket_state.confirm.deliver'),
+                          :class => 'btn btn-mini btn-success'
+              = link_to t('ticket_state.cancel'),
+                          cancel_ticket_path(ticket),
+                          :confirm => t('ticket_state.confirm.cancel'),
+                          :class => 'btn btn-mini btn-danger'
               / = link_to t('.edit', :default => t("helpers.links.edit")),
               /             edit_ticket_path(ticket), :class => 'btn btn-mini btn-primary'
               / = link_to t('.destroy', :default => t("helpers.links.destroy")),

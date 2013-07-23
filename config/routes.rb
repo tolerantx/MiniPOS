@@ -1,7 +1,12 @@
 MiniPos::Application.routes.draw do
 
   resources :suppliers
-  resources :tickets
+  resources :tickets do
+    member do
+      get 'cancel'
+      get 'deliver'
+    end
+  end
   resources :units
   resources :categories
   resources :products do

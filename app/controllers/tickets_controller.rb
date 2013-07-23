@@ -3,7 +3,7 @@ class TicketsController < InheritedResources::Base
 
   def index
     @search = params[:search] || {}
-    @tickets = Ticket.search(params[:search]).paginate(:page => params[:page])
+    @tickets = Ticket.search(params[:search]).paginate(:page => params[:page], :include => [:recipient])
   end
 
   private

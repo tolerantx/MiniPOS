@@ -1,4 +1,5 @@
 class Ticket < ActiveRecord::Base
+  STATES = [%w[Creado created], %w[Entregado delivered], %w[Cancelado canceled]]
 
   has_one :recipient, dependent: :destroy
 
@@ -24,7 +25,8 @@ class Ticket < ActiveRecord::Base
     terms.gsub(/[^a-zA-Z0-9\-Ññ\s]/, '').split(' ').each do |criteria|
       conditions << "state like '%#{criteria}%'"
     end
-    where conditions.join(" AND ")
+    results = where conditions.join(" AND ")
+    results.where(:state => params[:state]) if params[:state].present?
   }
 
   state_machine :initial => :created do
