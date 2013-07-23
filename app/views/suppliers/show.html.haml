@@ -1,0 +1,90 @@
+- model_class = Supplier
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.titleize
+
+.row
+  .span8
+    %p
+      %strong= model_class.human_attribute_name(:name)
+      = @supplier.name
+
+    %hr
+    %h4 Dirección
+
+    .row
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:address1)
+          = @supplier.address.address1
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:address2)
+          = @supplier.address.address2
+
+    .row
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:state)
+          = @supplier.address.state
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:city)
+          = @supplier.address.city
+
+    .row
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:town)
+          = @supplier.address.town
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:location)
+          = @supplier.address.location
+
+    .row
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:zip_code)
+          = @supplier.address.zip_code
+      .span4
+        %p
+          %strong= Address.human_attribute_name(:comments)
+          = @supplier.address.comments
+
+    .row
+      .span8
+        %h4= t("labels.products")
+
+        %table
+          - size = @supplier.products.count >= 3 ? @supplier.products.count : 3
+          - @supplier.products.in_groups_of((size/3).ceil).transpose.each do |row|
+            %tr
+              - row.each do |product|
+                &nbsp;
+                %td.span2= product.name if product
+
+  .span4
+    .block
+      %h5 Teléfono(s)
+      - @supplier.phones.each do |phone|
+        %p
+          = phone.number
+          = phone.phone_type
+
+      %h5 Correo electrónico(s)
+      - @supplier.emails.each do |email|
+        %p
+          = email.email
+          = email.email_type
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")),
+              suppliers_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_supplier_path(@supplier), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")),
+              supplier_path(@supplier),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
+              :class => 'btn btn-danger'
+

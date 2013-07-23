@@ -1,0 +1,12 @@
+= form_for(@category) do |f|
+  = error_messages(@category)
+  .row
+    .span4
+      .control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name
+
+  .form-actions
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), categories_path, :class => 'btn'
+    = f.submit nil, :class => 'btn btn-primary'

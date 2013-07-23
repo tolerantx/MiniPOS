@@ -1,0 +1,195 @@
+es-MX:
+  system:
+    name: "Sistema"
+  errors:
+    header: "Se han encontrado %{number} error(es):"
+    ticket:
+      product_presence: "El ticket debe contener al menos un concepto"
+  flash:
+    actions:
+      create:
+        notice: "¡%{resource_name} se Agregó Exitosamente!"
+      update:
+        notice: "¡%{resource_name} se Actualizó Exitosamente!"
+      destroy:
+        notice: "¡%{resource_name} se Eliminó Exitosamente!"
+        alert: "%{resource_name} no se pudo Eliminar - Intentalo nuevamente."
+
+  labels:
+    select: "Selecciona ..."
+    general_information: "Información general"
+    total_records: "Total de registros:"
+    phone: "Teléfono(s)"
+    add_phone: "Agregar Teléfono"
+    email: "Correo Electrónico(s)"
+    add_email: "Agregar Correo Electrónico"
+    delete_phone: "Eliminar Teléfono"
+    delete_email: "Eliminar Correo Electrónico"
+    search: "Buscar"
+    clear: "Limpiar"
+    total: "Total"
+    add_item: "Agregar Concepto"
+    categories: "Categorias"
+    suppliers: "Proveedores"
+    products: "Productos"
+
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+    page_gap: "&hellip;"
+
+  placeholder:
+    search: "Escribe.."
+
+  select_blank: "Selecciona ..."
+
+  navigation:
+    customers: "Clientes"
+    administration: "Administración"
+    products: "Productos"
+    categories: "Categorias"
+    units: "Unidades"
+    tickets: "Tickets"
+    suppliers: "Proveedores"
+
+  ticket_state:
+    created: "Creado"
+    canceled: "Cancelado"
+
+  activerecord:
+    models:
+      customer: "Cliente"
+      category: "Categoría"
+      unit: "Unidad"
+      product: "Producto"
+      ticket: "Ticket"
+      supplier: "Proveedor"
+
+    attributes:
+      customer:
+        first_name: "Nombre(s)"
+        last_name: "Apellido(s)"
+        created_at: "Fecha creación"
+        full_name: "Nombre"
+      address:
+        address1: "Dirección"
+        address2: "Colonia"
+        state: "Estado"
+        city: "Ciudad"
+        town: "Municipio"
+        location: "Localidad"
+        zip_code: "Código postal"
+        comments: "Observaciones"
+      phone:
+        number: "Número"
+        phone_type: "Tipo"
+      email:
+        email: "Correo Electrónico"
+        email_type: "Tipo"
+      category:
+        name: "Nombre"
+        created_at: "Fecha creación"
+      unit:
+        name: "Nombre"
+        created_at: "Fecha creación"
+      product:
+        name: "Nombre"
+        short_name: "Nombre Corto"
+        price: "Precio unitario"
+        unit_id: "Unidad"
+        code: "Código"
+        category_id: "Categoría"
+        comments: "Comentarios"
+        min_stock: "Stock mínimo"
+        max_stock: "Stock máximo"
+        existence: "Existencia"
+        bar_code: "Código de barras"
+        created_at: "Fecha creación"
+        quantity_package: "Unidades por caja"
+        purchase_price: "Precio de compra"
+      ticket:
+        customer_id: "Cliente"
+        total: "Total"
+        status: "Estado"
+      item:
+        quantity: "Cantidad"
+        unit: "Unidad"
+        code: "Código"
+        description: "Descripción"
+        unit_value: "Valor unitario"
+        amount: "Monto"
+      supplier:
+        name: "Nombre"
+        created_at: "Fecha creación"
+
+  customers:
+    index:
+      title: "Clientes"
+    new:
+      title: "Nuevo cliente"
+    create:
+      title: "Crear cliente"
+    edit:
+      title: "Editar "
+    show:
+      title: "Cliente "
+
+  categories:
+    index:
+      title: "Categorias"
+    new:
+      title: "Nueva categoria"
+    create:
+      title: "Crear categoria"
+    edit:
+      title: "Editar "
+    show:
+      title: "Categoria "
+
+  units:
+    index:
+      title: "Unidades"
+    new:
+      title: "Nueva unidad"
+    create:
+      title: "Crear unidad"
+    edit:
+      title: "Editar "
+    show:
+      title: "Unidad "
+
+  products:
+    index:
+      title: "Productos"
+    new:
+      title: "Nuevo producto"
+    create:
+      title: "Crear producto"
+    edit:
+      title: "Editar "
+    show:
+      title: "Producto "
+
+  tickets:
+    index:
+      title: "Tickets"
+    new:
+      title: "Nuevo ticket"
+    create:
+      title: "Crear ticket"
+    edit:
+      title: "Editar "
+    show:
+      title: "Ticket "
+
+  suppliers:
+    index:
+      title: "Proveedores"
+    new:
+      title: "Nuevo proveedor"
+    create:
+      title: "Crear proveedor"
+    edit:
+      title: "Editar "
+    show:
+      title: "Proveedor "

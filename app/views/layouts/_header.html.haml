@@ -1,0 +1,15 @@
+%header
+
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container
+        %a.btn.btn-navbar{:'data-toggle' => "collapse", :'data-target' => ".nav-collapse"}
+          %span.icon-bar &nbsp;
+          %span.icon-bar &nbsp;
+          %span.icon-bar &nbsp;
+
+        %a.brand{:href => "/"}
+          = t("system.name")
+        .nav-collapse
+          = render_navigation(:expand_all => true)
+

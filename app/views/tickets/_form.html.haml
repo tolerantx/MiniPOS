@@ -1,0 +1,75 @@
+.row
+  .span8
+    = nested_form_for(@ticket) do |f|
+      = error_messages(@ticket)
+      .text-right
+        = f.link_to_add t("labels.add_item"), :items, "data-target" => "#items", :class => "btn btn-primary"
+      %table
+        %thead
+          %tr
+            %th
+              = Item.human_attribute_name(:code)
+            %th
+              = Item.human_attribute_name(:description)
+            %th
+              = Item.human_attribute_name(:quantity)
+            %th
+              = Item.human_attribute_name(:unit_value)
+            %th
+              = Item.human_attribute_name(:amount)
+            %th
+        %tbody#items
+        = f.fields_for :items, :wrapper => false do |item|
+          %tr.fields
+            %td
+              = item.text_field :code, :class => 'input-mini item_code', :'data-search-url' => '/products/search_code'
+            %td
+              = item.text_field :description, :class => 'item_description'
+            %td
+              = item.text_field :quantity, :class => 'input-mini item_quantity', 'data-only-number' => true
+            %td
+              .input-prepend
+                %span.add-on $
+                = item.text_field :unit_value, :class => 'input-small item_unit_value text-right', 'data-only-number' => true
+            %td
+              .input-prepend
+                %span.add-on $
+                %span.input-small.uneditable-input.item_amount.text-right
+                  = "%.2f" % item.object.amount unless item.object.amount.nil?
+                = item.hidden_field :amount, :class => 'item_amount'
+            %td
+              = link_to '', '#', :class => 'icon-remove remove_item', :'data-message' => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))
+
+      / .control-group
+      /   = f.label :customer_id, :class => 'control-label'
+      /   .controls
+      /     = f.collection_select :customer_id, Customer.all, :id, :full_name, {:include_blank => t("select_blank")}
+      / .control-group
+      /   = f.label :total, :class => 'control-label'
+      /   .controls
+      /     = f.text_field :total
+      / .control-group
+      /   = f.label :status, :class => 'control-label'
+      /   .controls
+      /     = f.select :status, Ticket::STATUS, {:include_blank => t("select_blank")}
+      .form-actions
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), categories_path, :class => 'btn'
+        = f.submit nil, :class => 'btn btn-primary'
+
+  .span4
+    .block
+      %p
+        %strong= t("labels.total")
+        %span#total
+          = "$ #{@ticket.total_tickets}" if @ticket.total_tickets
+
+      = form_tag '#', :id => 'ticket-detail-form', :class => 'form-inline' do
+        / .control-group
+        /   Código
+        /   .controls
+        /     = text_field_tag 'ticket-code', nil, :'data-search-url' => '/tickets/search_code', 'data-target' => '#items', :'data-blueprint-id' => 'items_fields_blueprint', :'data-association' => 'items'
+        /     = hidden_field_tag 'ticket-code-hidden', nil, :class => 'hidden-id'
+        /     %label.not_found
+
+  .row
+    .span12
