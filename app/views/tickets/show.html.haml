@@ -45,6 +45,15 @@
         %strong= model_class.human_attribute_name(:status)
         = t("ticket_state.#{@ticket.state}")
 
+      %h5= t("labels.customer_information")
+      %p
+        = @ticket.recipient.full_name
+
+      - if @ticket.recipient.address
+        %p
+          %strong= t("labels.address")
+          = full_address(@ticket.recipient.address)
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),
               tickets_path, :class => 'btn'

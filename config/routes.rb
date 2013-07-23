@@ -11,8 +11,6 @@ MiniPos::Application.routes.draw do
     end
   end
 
-  resources :versions
-
   # get "customers/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -26,6 +24,7 @@ MiniPos::Application.routes.draw do
 
   root 'customers#index'
 
+  # resources :versions
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -11,8 +11,6 @@ class Supplier < ActiveRecord::Base
   accepts_nested_attributes_for :phones, :allow_destroy => true
   accepts_nested_attributes_for :emails, :allow_destroy => true
 
-  has_paper_trail
-
   default_scope { order(:name) }
 
   scope :search, ->(params) {

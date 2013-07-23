@@ -7,8 +7,9 @@
           .control-group
             = f.label :customer_name, :class => 'control-label'
             .controls
-              = f.text_field :customer_name, :'data-search-url' => '/customers/search_name'
-              = f.hidden_field :customer_id, :class => 'hidden-id'
+              = f.collection_select :customer_id, Customer.all, :id, :full_name, {:include_blank => t("select_blank")}, :class => 'text_field'
+              -#= f.text_field :customer_name, :'data-search-url' => '/customers/search_name'
+              -#= f.hidden_field :customer_id, :class => 'hidden-id'
 
         .span4
           .text-right
@@ -62,17 +63,13 @@
         %span#total
           = "$ #{@ticket.total_tickets}" if @ticket.total_tickets
 
-      %h5= t("labels.customer_information")
-      #customer_name
-      #customer_address
-
-      = form_tag '#', :id => 'ticket-detail-form', :class => 'form-inline' do
-        / .control-group
-        /   Código
-        /   .controls
-        /     = text_field_tag 'ticket-code', nil, :'data-search-url' => '/tickets/search_code', 'data-target' => '#items', :'data-blueprint-id' => 'items_fields_blueprint', :'data-association' => 'items'
-        /     = hidden_field_tag 'ticket-code-hidden', nil, :class => 'hidden-id'
-        /     %label.not_found
+      / = form_tag '#', :id => 'ticket-detail-form', :class => 'form-inline' do
+      / .control-group
+      /   Código
+      /   .controls
+      /     = text_field_tag 'ticket-code', nil, :'data-search-url' => '/tickets/search_code', 'data-target' => '#items', :'data-blueprint-id' => 'items_fields_blueprint', :'data-association' => 'items'
+      /     = hidden_field_tag 'ticket-code-hidden', nil, :class => 'hidden-id'
+      /     %label.not_found
 
   .row
     .span12

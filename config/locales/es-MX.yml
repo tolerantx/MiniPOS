@@ -33,6 +33,7 @@ es-MX:
     suppliers: "Proveedores"
     products: "Productos"
     customer_information: "Información del Cliente"
+    address: "Dirección"
 
   will_paginate:
     previous_label: "&#8592; Anterior"

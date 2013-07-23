@@ -1,4 +1,6 @@
 class TicketsController < InheritedResources::Base
+  actions :all, :except => [ :edit, :update, :destroy ]
+
   def index
     @search = params[:search] || {}
     @tickets = Ticket.search(params[:search]).paginate(:page => params[:page])

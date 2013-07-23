@@ -10,7 +10,6 @@ jQuery ->
   $(document).ready(ready)
   $(document).on('page:load', ready)
 
-
   # ====================================================================
   # Search code and description of the products
   # ====================================================================
@@ -99,24 +98,24 @@ jQuery ->
   # Customer autocomplete
   # ====================================================================
   # $('#ticket_customer_name').myAutocomplete()
-  $('#ticket_customer_name').livequery ->
-    $(this).autocomplete
-      source: $(this).attr('data-search-url')
+  # $('#ticket_customer_name').livequery ->
+  #   $(this).autocomplete
+  #     source: $(this).attr('data-search-url')
 
-      change: (event, ui) ->
-        if ui.item is not null
-          $(this).parent().find('input.hidden-id').val(ui.item.id);
-          $('#customer_name').html(ui.item.label)
-          $('#customer_address').html(ui.item.customer.basic_address)
-        else
-          $(this).parent().find('input.hidden-id').val('');
-          $('#customer_name').html('')
-          $('#customer_address').html('')
+  #     change: (event, ui) ->
+  #       if ui.item is not null
+  #         $(this).parent().find('input.hidden-id').val(ui.item.id);
+  #         $('#customer_name').html(ui.item.label)
+  #         $('#customer_address').html(ui.item.customer.basic_address)
+  #       else
+  #         $(this).parent().find('input.hidden-id').val('');
+  #         $('#customer_name').html('')
+  #         $('#customer_address').html('')
 
-      select: (event, ui) ->
-        $(this).parent().find('input.hidden-id').val(ui.item.id);
-        $('#customer_name').html(ui.item.label)
-        $('#customer_address').html(ui.item.customer.basic_address)
+  #     select: (event, ui) ->
+  #       $(this).parent().find('input.hidden-id').val(ui.item.id);
+  #       $('#customer_name').html(ui.item.label)
+  #       $('#customer_address').html(ui.item.customer.basic_address)
 
 
 

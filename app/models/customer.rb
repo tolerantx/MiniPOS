@@ -11,8 +11,6 @@ class Customer < ActiveRecord::Base
   accepts_nested_attributes_for :phones, :allow_destroy => true
   accepts_nested_attributes_for :emails, :allow_destroy => true
 
-  has_paper_trail
-
   default_scope { order(:first_name, :last_name) }
 
   scope :search, ->(params) {
@@ -44,7 +42,7 @@ class Customer < ActiveRecord::Base
   end
 
   def basic_address
-    [ address.address1, address.address2 ].join(", ")
+    [address.address1, address.address2].join(", ")
   end
 
 end
