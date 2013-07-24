@@ -10,19 +10,19 @@
       = text_field_tag 'search[terms]', @search[:terms], :placeholder => t("placeholder.search")
       %label
         %strong= t("labels.state")
-      = select_tag 'search[state]', options_for_select(Ticket::STATES), { :include_blank => true }
+      = select_tag 'search[state]', options_for_select(Ticket::STATES, :selected => params[:search] ? params[:search][:state] : ""), { :include_blank => true }
       = submit_tag 'Buscar', :id => 'tickets-form-button', :class => 'btn btn-small btn-primary'
       = link_to t('labels.clear'), tickets_path, :class => 'btn btn-small'
 
 
-    %table.table.table-striped.table-condensed.table-hover
+    %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
           %th= model_class.human_attribute_name(:id)
           %th= t("activerecord.models.customer")
           %th= model_class.human_attribute_name(:total)
-          %th= model_class.human_attribute_name(:created_at)
           %th= model_class.human_attribute_name(:state)
+          %th= model_class.human_attribute_name(:created_at)
           %th= t '.actions', :default => t("helpers.actions")
       %tbody
         - @tickets.each do |ticket|
@@ -34,9 +34,10 @@
             %td
               = number_to_currency ticket.total
             %td
-              =l ticket.created_at, :format => :short
+              %span{:class => "btn btn-mini disabled #{state_highlight(ticket)}"}
+                = t("ticket_state.#{ticket.state}")
             %td
-              = t("ticket_state.#{ticket.state}")
+              = l ticket.created_at, :format => :short
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           ticket_path(ticket), :class => 'btn btn-mini btn-warning'

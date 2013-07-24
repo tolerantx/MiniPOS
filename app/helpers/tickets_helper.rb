@@ -7,5 +7,15 @@ module TicketsHelper
     address += ", #{obj.city}"
     address += ", #{obj.state}"
     address += ", C.P: #{obj.zip_code}"
-end
+  end
+
+  def state_line(obj)
+    states = { 'delivered' => 'success', 'canceled' => 'error' }
+    states[obj.state]
+  end
+
+  def state_highlight(obj)
+    states = { 'delivered' => 'btn-success', 'canceled' => 'btn-danger' }
+    states[obj.state]
+  end
 end
