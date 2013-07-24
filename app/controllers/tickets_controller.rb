@@ -3,7 +3,19 @@ class TicketsController < InheritedResources::Base
 
   def index
     @search = params[:search] || {}
-    @tickets = Ticket.search(params[:search]).paginate(:page => params[:page], :include => [:recipient])
+    @tickets = Ticket.search(params[:search]).paginate(:page => params[:page])
+  end
+
+  def deliver
+    @ticket = Ticket.find(params[:id])
+    @ticket.deliver
+    redirect_to :action => 'index'
+  end
+
+  def cancel
+    @ticket = Ticket.find(params[:id])
+    @ticket.cancel
+    redirect_to :action => 'index'
   end
 
   private

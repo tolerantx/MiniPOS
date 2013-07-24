@@ -22,6 +22,7 @@
           %th= t("activerecord.models.customer")
           %th= model_class.human_attribute_name(:total)
           %th= model_class.human_attribute_name(:created_at)
+          %th= model_class.human_attribute_name(:state)
           %th= t '.actions', :default => t("helpers.actions")
       %tbody
         - @tickets.each do |ticket|
@@ -32,25 +33,22 @@
               = ticket.recipient.full_name if ticket.recipient
             %td
               = number_to_currency ticket.total
-            %td=l ticket.created_at, :format => :short
+            %td
+              =l ticket.created_at, :format => :short
+            %td
+              = t("ticket_state.#{ticket.state}")
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           ticket_path(ticket), :class => 'btn btn-mini btn-warning'
               = link_to t('ticket_state.deliver'),
                           deliver_ticket_path(ticket),
-                          :confirm => t('ticket_state.confirm.deliver'),
-                          :class => 'btn btn-mini btn-success'
+                          :data => { :confirm => t('ticket_state.confirm.deliver') },
+                          :class => 'btn btn-mini btn-success' if ticket.created?
               = link_to t('ticket_state.cancel'),
                           cancel_ticket_path(ticket),
-                          :confirm => t('ticket_state.confirm.cancel'),
-                          :class => 'btn btn-mini btn-danger'
-              / = link_to t('.edit', :default => t("helpers.links.edit")),
-              /             edit_ticket_path(ticket), :class => 'btn btn-mini btn-primary'
-              / = link_to t('.destroy', :default => t("helpers.links.destroy")),
-              /             ticket_path(ticket),
-              /             :method => :delete,
-              /             :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              /             :class => 'btn btn-mini btn-danger'
+                          :data => { :confirm => t('ticket_state.confirm.cancel') },
+                          :class => 'btn btn-mini btn-danger' if ticket.created? || ticket.delivered?
+
 
     = pagination @tickets
 

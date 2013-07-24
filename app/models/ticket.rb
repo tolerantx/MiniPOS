@@ -5,8 +5,6 @@ class Ticket < ActiveRecord::Base
 
   has_many :items, dependent: :destroy
 
-  belongs_to :customer
-
   validates :total, :presence => true
   validate :information_required
 
@@ -21,12 +19,14 @@ class Ticket < ActiveRecord::Base
 
   scope :search, ->(params) {
     conditions = []
+
     terms = !params.nil? ? params[:terms] : ""
     terms.gsub(/[^a-zA-Z0-9\-Ññ\s]/, '').split(' ').each do |criteria|
-      conditions << "state like '%#{criteria}%'"
+      conditions << "recipients.first_name like '%#{criteria}%' or recipients.last_name like '%#{criteria}%'"
     end
-    results = where conditions.join(" AND ")
-    results.where(:state => params[:state]) if params[:state].present?
+    conditions << "state = '#{params[:state]}'" if params && params[:state].present?
+
+    includes(:recipient).where(conditions.join(" AND ")).references(:recipient)
   }
 
   state_machine :initial => :created do
@@ -51,10 +51,12 @@ class Ticket < ActiveRecord::Base
   end
 
   def set_values
-    customer = Customer.find(self.customer_id)
-    self.recipient = Recipient.new(:first_name => customer.first_name, :last_name => customer.last_name)
-    self.recipient.address = Address.new(:address1 => customer.address.address1, :address2 => customer.address.address2, :zip_code => customer.address.zip_code, :state => customer.address.state, :city => customer.address.city, :town => customer.address.town, :location => customer.address.location)
-    self.total = total_tickets
+    if self.customer_id
+      customer = Customer.find(self.customer_id)
+      self.recipient = Recipient.new(:first_name => customer.first_name, :last_name => customer.last_name)
+      self.recipient.address = Address.new(:address1 => customer.address.address1, :address2 => customer.address.address2, :zip_code => customer.address.zip_code, :state => customer.address.state, :city => customer.address.city, :town => customer.address.town, :location => customer.address.location)
+      self.total = total_tickets
+    end
   end
 
 end

@@ -126,6 +126,8 @@ es-MX:
         total: "Total"
         status: "Estado"
         customer_name: "Cliente"
+        created_at: "Fecha creación"
+        state: "Estatus"
       item:
         quantity: "Cantidad"
         unit: "Unidad"
