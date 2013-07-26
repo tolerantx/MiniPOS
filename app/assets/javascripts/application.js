@@ -12,5 +12,37 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.autocomplete
+//= require lib/jquery.livequery
+//= require lib/jquery.watch
+//= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+new function($) {
+  $.fn.myAutocomplete = function(settings) {
+    settings = settings || {};
+    this.each(function() {
+      var searchUrl = $(this).attr('data-search-url');
+      var postUrl   = $(this).attr('data-post-url');
+
+      $(this).autocomplete({
+        source: searchUrl,
+        change: function(event, ui) {
+          input     = $(this)
+          if (!ui.item && postUrl) {
+            $.post(postUrl, { name: $(this).val() }, function(data) {
+              input.parent().find('input.hidden-id').val(data.id);
+            }, 'json');
+            return false;
+          }
+        },
+        select: function(event, ui) {
+          $(this).parent().find('input.hidden-id').val(ui.item.id);
+          // $('a.add_nested_fields').trigger('click')
+        },
+        autoFocus: true
+      });
+    });
+  }
+}(jQuery);

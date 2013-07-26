@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Alivio::Application.config.secret_key_base = '04d1b7b67627c4db53d7fc3f3c3600f1e07027cc4629cd0f9c9a7c8910f695dcbfc3b8134b5a24fc07224eb12f323bd53fba1ae045545ea982bb119e5a24ba56'
+MiniPos::Application.config.secret_key_base = '04d1b7b67627c4db53d7fc3f3c3600f1e07027cc4629cd0f9c9a7c8910f695dcbfc3b8134b5a24fc07224eb12f323bd53fba1ae045545ea982bb119e5a24ba56'

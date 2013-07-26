@@ -1,0 +1,47 @@
+.row
+  .span9
+    - model_class = Unit
+    .page-hader
+      %h1= t('.title', :default => model_class.model_name.human.pluralize.titleize)
+
+    = form_tag units_path, :method => :get, :id => 'units-search-form', :class => 'well form-inline' do
+      %label
+        %strong= t("labels.search")
+      = text_field_tag 'search[terms]', @search[:terms], :placeholder => t("placeholder.search")
+      = submit_tag 'Buscar', :id => 'units-form-button', :class => 'btn btn-small btn-primary'
+      = link_to t('labels.clear'), units_path, :class => 'btn btn-small'
+
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= model_class.human_attribute_name(:name)
+          %th= model_class.human_attribute_name(:created_at)
+          %th= t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @units.each do |unit|
+          %tr
+            %td
+              = link_to unit.name, unit_path(unit)
+            %td=l unit.created_at, :format => :short
+            %td
+              = link_to t('.show', :default => t("helpers.links.show")),
+                          unit_path(unit), :class => 'btn btn-mini btn-warning'
+              = link_to t('.edit', :default => t("helpers.links.edit")),
+                          edit_unit_path(unit), :class => 'btn btn-mini btn-primary'
+              = link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          unit_path(unit),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-mini btn-danger'
+
+    = pagination @units
+
+  .span3
+    .text-right
+      = link_to t('.new', :default => t("helpers.links.new")), new_unit_path, :class => 'btn btn-primary'
+
+    .block
+      %h5= t("labels.general_information")
+      %p
+        %strong= t("labels.total_records")
+        = @units.count

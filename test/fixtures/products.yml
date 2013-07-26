@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  short_name: MyString
+  price: 9.99
+  unit_id: 1
+  code: MyString
+  category_id: 1
+  comments: MyText
+  min_stock: 1
+  max_stick: 1
+  bar_code: MyString
+
+two:
+  name: MyString
+  short_name: MyString
+  price: 9.99
+  unit_id: 1
+  code: MyString
+  category_id: 1
+  comments: MyText
+  min_stock: 1
+  max_stick: 1
+  bar_code: MyString

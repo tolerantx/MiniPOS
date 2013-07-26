@@ -1,0 +1,14 @@
+!!! 5
+%html
+  %head
+    %title= title_page
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "nested_form"
+    = csrf_meta_tags
+
+  %body
+    = render :partial => "layouts/header"
+    .container
+      = render :partial => "layouts/notifications"
+      = yield
