@@ -51,7 +51,7 @@ class Ticket < ActiveRecord::Base
   end
 
   def set_values
-    if self.customer_id
+    if self.customer_id.present?
       customer = Customer.find(self.customer_id)
       self.recipient = Recipient.new(:first_name => customer.first_name, :last_name => customer.last_name)
       self.recipient.address = Address.new(:address1 => customer.address.address1, :address2 => customer.address.address2, :zip_code => customer.address.zip_code, :state => customer.address.state, :city => customer.address.city, :town => customer.address.town, :location => customer.address.location)
