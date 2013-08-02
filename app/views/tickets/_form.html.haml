@@ -5,7 +5,7 @@
       .row
         .span4
           .control-group
-            = f.label :customer_name, :class => 'control-label'
+            = f.label :customer_id, :class => 'control-label'
             .controls
               = f.collection_select :customer_id, Customer.all, :id, :full_name, {:include_blank => t("select_blank")}, :class => 'text_field'
               -#= f.text_field :customer_name, :'data-search-url' => '/customers/search_name'

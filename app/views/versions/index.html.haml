@@ -4,7 +4,7 @@
     .page-hader
       %h1= t('.title', :default => model_class.model_name)
 
-    %table.table.table-striped
+    %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
           %th= model_class.human_attribute_name(:item_type)

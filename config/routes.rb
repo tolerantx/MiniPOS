@@ -1,5 +1,14 @@
 MiniPos::Application.routes.draw do
 
+  resources :purchase_order_details
+
+  resources :purchase_orders do
+    member do
+      get 'cancel'
+      get 'receive'
+    end
+  end
+
   resources :suppliers
   resources :tickets do
     member do

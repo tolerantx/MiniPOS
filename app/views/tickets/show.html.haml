@@ -39,8 +39,7 @@
         = @ticket.recipient.full_name if @ticket.recipient
       %p
         %strong= model_class.human_attribute_name(:total)
-        $
-        = @ticket.total
+        = number_to_currency @ticket.total
       %p
         %strong= model_class.human_attribute_name(:status)
         = t("ticket_state.#{@ticket.state}")

@@ -1,10 +1,14 @@
 es-MX:
   system:
     name: "Sistema"
+
   errors:
     header: "Se han encontrado %{number} error(es):"
     ticket:
       product_presence: "El ticket debe contener al menos un concepto"
+    purchase_order:
+      product_presence: "La orden de compra debe contener al menos un concepto"
+
   flash:
     actions:
       create:
@@ -54,6 +58,7 @@ es-MX:
     units: "Unidades"
     tickets: "Tickets"
     suppliers: "Proveedores"
+    purchase_orders: "Ordenes de compra"
 
   ticket_state:
     created: "Creado"
@@ -69,6 +74,20 @@ es-MX:
       cancel: '¿Estás seguro que deseas cancelar el ticket?'
       deliver: '¿Estás seguro que deseas entregar el ticket?'
 
+  purchase_order_state:
+    created: "Creado"
+    canceled: "Cancelado"
+    received: "Recibido"
+    pluralize:
+      created: "Creados"
+      canceled: "Cancelados"
+      received: "Recibidos"
+    cancel: "Cancelar"
+    receive: "Recibir"
+    confirm:
+      cancel: '¿Estás seguro que deseas cancelar la orden de compra?'
+      receive: '¿Estás seguro que deseas recibir la orden de compra?'
+
   activerecord:
     models:
       customer: "Cliente"
@@ -78,6 +97,7 @@ es-MX:
       ticket: "Ticket"
       supplier: "Proveedor"
       version: "Bitácora"
+      purchase_order: "Orden de compra"
 
     attributes:
       customer:
@@ -125,7 +145,7 @@ es-MX:
         customer_id: "Cliente"
         total: "Total"
         status: "Estado"
-        customer_name: "Cliente"
+        # customer_name: "Cliente"
         created_at: "Fecha creación"
         state: "Estatus"
       item:
@@ -144,6 +164,21 @@ es-MX:
         event: "Evento"
         whodunnit: "Usuario"
         created_at: "Fecha"
+      purchase_order:
+        supplier_id: "Proveedor"
+        received_at: "Recibido"
+        state: "Estatus"
+        invoice_number: "Número de factura"
+        created_at: "Fecha"
+      purchase_order_detail:
+        quantity: "Cantidad"
+        unit: "Unidad"
+        code: "Código"
+        description: "Descripción"
+        unit_value: "Valor unitario"
+        amount: "Monto"
+        quantity_required: "Cantidad requerida"
+        quantity_received: "Cantidad recibida"
 
   customers:
     index:
@@ -220,3 +255,15 @@ es-MX:
   versions:
     index:
       title: "Bitácora"
+
+  purchase_orders:
+    index:
+      title: "Ordenes de compra"
+    new:
+      title: "Nueva orden de compra"
+    create:
+      title: "Crear orden de compra"
+    edit:
+      title: "Editar "
+    show:
+      title: "Orden de compra "

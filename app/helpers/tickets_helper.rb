@@ -15,7 +15,7 @@ module TicketsHelper
   end
 
   def state_highlight(obj)
-    states = { 'delivered' => 'btn-success', 'canceled' => 'btn-danger' }
+    states = { 'delivered' => 'btn-success', 'canceled' => 'btn-danger', 'received' => 'btn-success' }
     states[obj.state]
   end
 end

@@ -15,7 +15,7 @@ class Ticket < ActiveRecord::Base
 
   before_validation :set_values
 
-  attr_accessor :customer_id, :customer_name
+  attr_accessor :customer_id#, :customer_name
 
   scope :search, ->(params) {
     conditions = []

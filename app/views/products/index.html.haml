@@ -11,12 +11,14 @@
         = submit_tag 'Buscar', :id => 'products-form-button', :class => 'btn btn-small btn-primary'
         = link_to t('labels.clear'), products_path, :class => 'btn btn-small'
 
-    %table.table.table-striped
+    %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
           %th= model_class.human_attribute_name(:code)
           %th= model_class.human_attribute_name(:name)
           %th= model_class.human_attribute_name(:price)
+          %th= model_class.human_attribute_name(:purchase_price)
+          %th= model_class.human_attribute_name(:existence)
           %th= model_class.human_attribute_name(:created_at)
           %th= t '.actions', :default => t("helpers.actions")
       %tbody
@@ -26,6 +28,8 @@
               = link_to product.code, product_path(product)
             %td= product.name
             %td= number_to_currency product.price
+            %td= number_to_currency product.purchase_price
+            %td= product.existence
             %td=l product.created_at, :format => :short
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
