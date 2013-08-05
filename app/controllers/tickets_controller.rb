@@ -26,7 +26,7 @@ class TicketsController < InheritedResources::Base
       :customer_id,
       :total,
       :status,
-      items_attributes: [:quantity, :unit, :code, :description, :unit_value, :amount, :_destroy, :id]
+      items_attributes: [:quantity, :unit, :code, :description, :unit_value, :amount, :_destroy, :id, :product_id]
     ])
   end
 

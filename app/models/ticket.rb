@@ -14,6 +14,7 @@ class Ticket < ActiveRecord::Base
   default_scope { order(id: :desc) }
 
   before_validation :set_values
+  after_update :update_stock
 
   attr_accessor :customer_id#, :customer_name
 
@@ -56,6 +57,12 @@ class Ticket < ActiveRecord::Base
       self.recipient = Recipient.new(:first_name => customer.first_name, :last_name => customer.last_name)
       self.recipient.address = Address.new(:address1 => customer.address.address1, :address2 => customer.address.address2, :zip_code => customer.address.zip_code, :state => customer.address.state, :city => customer.address.city, :town => customer.address.town, :location => customer.address.location)
       self.total = total_tickets
+    end
+  end
+
+  def update_stock
+    self.items.each do |item|
+      item.decrement_stock if self.delivered?
     end
   end
 

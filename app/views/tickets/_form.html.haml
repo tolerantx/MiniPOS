@@ -33,6 +33,7 @@
           = f.fields_for :items, :wrapper => false do |item|
             %tr.fields
               %td
+                = item.hidden_field :product_id, :class => 'item_id'
                 = item.text_field :code, :class => 'input-mini item_code', :'data-search-url' => '/products/search_code'
               %td
                 = item.text_field :description, :class => 'item_description'
