@@ -42,8 +42,7 @@
               = link_to t('.show', :default => t("helpers.links.show")),
                           purchase_order_path(purchase_order), :class => 'btn btn-mini btn-warning'
               = link_to t('purchase_order_state.receive'),
-                          receive_purchase_order_path(purchase_order),
-                          :data => { :confirm => t('purchase_order_state.confirm.receive') },
+                          edit_purchase_order_path(purchase_order),
                           :class => 'btn btn-mini btn-success' if purchase_order.created?
               = link_to t('purchase_order_state.cancel'),
                           cancel_purchase_order_path(purchase_order),

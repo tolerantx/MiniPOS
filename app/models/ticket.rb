@@ -3,7 +3,7 @@ class Ticket < ActiveRecord::Base
 
   has_one :recipient, dependent: :destroy
 
-  has_many :items, dependent: :destroy
+  has_many :items, as: :owner, dependent: :destroy
 
   validates :total, :presence => true
   validate :information_required

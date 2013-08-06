@@ -19,7 +19,7 @@
             = PurchaseOrderDetail.human_attribute_name(:amount)
 
       %tbody#details
-        - @purchase_order.purchase_order_details.each do |detail|
+        - @purchase_order.items.each do |detail|
           %tr.fields
             %td
               = detail.code
@@ -56,8 +56,8 @@
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),
               purchase_orders_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_purchase_order_path(@purchase_order), :class => 'btn'
+  = link_to t('.edit', :default => t("purchase_orders.receive")),
+              edit_purchase_order_path(@purchase_order), :class => 'btn btn-success' if @purchase_order.created?
   = link_to t('.destroy', :default => t("helpers.links.destroy")),
               purchase_order_path(@purchase_order),
               :method => 'delete',

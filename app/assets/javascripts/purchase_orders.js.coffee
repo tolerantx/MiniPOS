@@ -45,6 +45,8 @@ jQuery ->
       quantity  = parent.find('input.detail_quantity_required').val()
       quantity  ||= parent.find('input.detail_quantity').val()
       price     = parent.find('input.detail_purchase_price').val()
+      quantity  = 0 if quantity is undefined
+      price     = 0 if price is undefined
 
       amount = (quantity * price).toFixed(2)
       parent.find('input.detail_amount').val(amount)

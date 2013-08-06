@@ -40,7 +40,7 @@ class PurchaseOrdersController < InheritedResources::Base
       :received_at,
       :status,
       :total,
-      purchase_order_details_attributes: [
+      items_attributes: [
         :quantity,
         :unit,
         :code,

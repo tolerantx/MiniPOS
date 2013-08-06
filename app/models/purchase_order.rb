@@ -1,13 +1,13 @@
 class PurchaseOrder < ActiveRecord::Base
-  STATES = [%w[Creado created], %w[Entregado delivered], %w[Cancelado canceled]]
+  STATES = [%w[Creado created], %w[Recibido received], %w[Cancelado canceled]]
 
-  has_many :purchase_order_details, dependent: :destroy
+  has_many :items, as: :owner, dependent: :destroy
 
   belongs_to :supplier
 
   validates :total, :presence => true
 
-  accepts_nested_attributes_for :purchase_order_details, :allow_destroy => true
+  accepts_nested_attributes_for :items, :allow_destroy => true
 
   default_scope { order(id: :desc) }
 
@@ -36,7 +36,7 @@ class PurchaseOrder < ActiveRecord::Base
   end
 
   def total_purchase_orders
-    purchase_order_details.collect().sum {|t| t.amount.to_f || 0.00 }
+    items.collect().sum {|t| t.amount.to_f || 0.00 }
   end
 
   private

@@ -11,7 +11,7 @@
 
         .span4
           .text-right
-            = f.link_to_add t("labels.add_item"), :purchase_order_details, "data-target" => "#purchase_order_details", :class => "btn btn-primary"
+            = f.link_to_add t("labels.add_item"), :items, "data-target" => "#purchase_order_details", :class => "btn btn-primary"
 
       %table
         %thead
@@ -28,7 +28,7 @@
               = PurchaseOrderDetail.human_attribute_name(:amount)
             %th
         %tbody#purchase_order_details
-          = f.fields_for :purchase_order_details, :wrapper => false do |detail|
+          = f.fields_for :items, :wrapper => false do |detail|
             %tr.fields
               %td
                 = detail.hidden_field :product_id, :class => 'detail_id'
