@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :suppliers
+  has_many :tickets
 
   belongs_to :unit
 
@@ -24,11 +25,12 @@ class Product < ActiveRecord::Base
 
   def self.terms_code_for(prefix)
     suggestions = where("code like ?", "%#{prefix}%")
-    suggestions.limit(10).collect { |p| { :label => p.code, :value => p.code, :product => {:code => p.code, :description => p.name, :unit_value => p.price } } }
+    suggestions.limit(10).collect { |p| { :label => p.code, :value => p.code, :product => {:id => p.id, :code => p.code, :description => p.name, :unit_value => p.price, :purchase_price => p.purchase_price } } }
   end
 
   def self.terms_name_for(prefix)
     suggestions = where("name like ?", "%#{prefix}%")
-    suggestions.limit(10).collect { |p| { :label => p.name, :value => p.name, :product => {:code => p.code, :description => p.name, :unit_value => p.price } } }
+    suggestions.limit(10).collect { |p| { :label => p.name, :value => p.name, :product => {:id => p.id, :code => p.code, :description => p.name, :unit_value => p.price, :purchase_price => p.purchase_price } } }
   end
+
 end

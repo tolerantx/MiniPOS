@@ -1,7 +1,21 @@
 MiniPos::Application.routes.draw do
 
+  resources :purchase_order_details
+
+  resources :purchase_orders do
+    member do
+      get 'cancel'
+      get 'receive'
+    end
+  end
+
   resources :suppliers
-  resources :tickets
+  resources :tickets do
+    member do
+      get 'cancel'
+      get 'deliver'
+    end
+  end
   resources :units
   resources :categories
   resources :products do
@@ -16,9 +30,15 @@ MiniPos::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :customers
+  resources :customers do
+    collection do
+      get 'search_name'
+    end
+  end
+
   root 'customers#index'
 
+  # resources :versions
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

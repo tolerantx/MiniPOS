@@ -18,6 +18,7 @@ gem 'simple-navigation', '~> 3.11.0'
 gem 'rails-i18n', '~> 4.0.0.pre'
 gem 'will_paginate', '~> 3.0.4'
 gem 'state_machine', '~> 1.2.0'
+# gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 3.0.4'

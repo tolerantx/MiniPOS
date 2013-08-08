@@ -22,6 +22,15 @@ class Customer < ActiveRecord::Base
     where conditions.join(" AND ")
   }
 
+  def self.terms_name_for(prefix)
+    conditions = []
+    prefix.gsub(/[^a-zA-Z0-9\-Ññ\s]/, '').split(' ').each do |criteria|
+      conditions << "first_name like '%#{criteria}%' or last_name like '%#{criteria}%'"
+    end
+    suggestions = where(conditions.join(" OR "))
+    suggestions.limit(10).collect { |p| { :label => p.full_name, :value => p.full_name, :id => p.id, :customer => {:basic_address => p.basic_address} } }
+  end
+
   def self.build_object
     new.tap do |customer|
       customer.address = Address.new
@@ -30,6 +39,10 @@ class Customer < ActiveRecord::Base
 
   def full_name
     [first_name, last_name].join(' ')
+  end
+
+  def basic_address
+    [address.address1, address.address2].join(", ")
   end
 
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  supplier_id: 1
+  received_at: 2013-08-01 11:00:14
+  state: MyString
+  invoice_number: MyString
+
+two:
+  supplier_id: 1
+  received_at: 2013-08-01 11:00:14
+  state: MyString
+  invoice_number: MyString

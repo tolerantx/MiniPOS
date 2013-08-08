@@ -51,6 +51,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #
     primary.item :customer, t("navigation.customers"), customers_path
     primary.item :ticket, t("navigation.tickets"), tickets_path
+    primary.item :ticket, t("navigation.purchase_orders"), purchase_orders_path
 
     # Add an item which has a sub navigation (same params, but with block)
     primary.item :administration, t("navigation.administration"), "#", :class => 'dropdown', :link => { :class => 'dropdown-toggle' , 'data-toggle' => "dropdown" }  do |sub_nav|
