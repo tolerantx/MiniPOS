@@ -22,17 +22,17 @@
         %thead
           %tr
             %th
-              = PurchaseOrderDetail.human_attribute_name(:code)
+              = Item.human_attribute_name(:code)
             %th
-              = PurchaseOrderDetail.human_attribute_name(:description)
+              = Item.human_attribute_name(:description)
             %th
-              = PurchaseOrderDetail.human_attribute_name(:quantity)
+              = Item.human_attribute_name(:quantity)
             %th
-              = PurchaseOrderDetail.human_attribute_name(:quantity_received)
+              = Item.human_attribute_name(:quantity_received)
             %th
-              = PurchaseOrderDetail.human_attribute_name(:unit_value)
+              = Item.human_attribute_name(:unit_value)
             %th
-              = PurchaseOrderDetail.human_attribute_name(:amount)
+              = Item.human_attribute_name(:amount)
 
         %tbody#purchase_order_details
           = f.fields_for :items, :wrapper => false do |detail|

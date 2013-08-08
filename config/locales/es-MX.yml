@@ -155,6 +155,8 @@ es-MX:
         description: "Descripción"
         unit_value: "Valor unitario"
         amount: "Monto"
+        quantity_required: "Cantidad requerida"
+        quantity_received: "Cantidad recibida"
       supplier:
         name: "Nombre"
         created_at: "Fecha creación"
@@ -170,15 +172,6 @@ es-MX:
         state: "Estatus"
         invoice_number: "Número de factura"
         created_at: "Fecha"
-      purchase_order_detail:
-        quantity: "Cantidad"
-        unit: "Unidad"
-        code: "Código"
-        description: "Descripción"
-        unit_value: "Valor unitario"
-        amount: "Monto"
-        quantity_required: "Cantidad requerida"
-        quantity_received: "Cantidad recibida"
 
   customers:
     index:
