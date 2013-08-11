@@ -1,9 +1,26 @@
-class TicketsController < InheritedResources::Base
-  actions :all, :except => [ :edit, :update, :destroy ]
+class TicketsController < ApplicationController
 
   def index
     @search = params[:search] || {}
     @tickets = Ticket.search(params[:search]).paginate(:page => params[:page])
+  end
+
+  def new
+    @ticket = Ticket.new
+  end
+
+  def create
+    @ticket = Ticket.new(permitted_params)
+
+    if @ticket.save
+      redirect_to ticket_path(@ticket)
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @ticket = Ticket.find(params[:id])
   end
 
   def deliver
@@ -21,13 +38,13 @@ class TicketsController < InheritedResources::Base
   private
 
   def permitted_params
-    params.permit(:ticket => [
+    params[:ticket].permit(
       :id,
       :customer_id,
       :total,
       :status,
       items_attributes: [:quantity, :unit, :code, :description, :unit_value, :amount, :_destroy, :id, :product_id]
-    ])
+    )
   end
 
 end
