@@ -1,7 +1,47 @@
-class ProductsController < InheritedResources::Base
+class ProductsController < ApplicationController
+
   def index
     @search = params[:search] || {}
     @products = Product.search(params[:search]).paginate(:page => params[:page])
+  end
+
+  def new
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(permitted_params)
+
+    if @product.save
+      redirect_to product_path(@product)
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+
+    if @product.update(permitted_params)
+      redirect_to product_path(@product)
+    else
+      render 'edit'
+    end
+  end
+
+  def show
+    @product = Product.find(params[:id])
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+
+    redirect_to products_path
   end
 
   def search_code
@@ -15,7 +55,7 @@ class ProductsController < InheritedResources::Base
   private
 
   def permitted_params
-    params.permit(:product => [
+    params[:product].permit(
       :id,
       :name,
       :short_name,
@@ -31,6 +71,6 @@ class ProductsController < InheritedResources::Base
       :quantity_package,
       :purchase_price,
       :category_ids => [],
-      :supplier_ids => [] ])
+      :supplier_ids => [])
   end
 end

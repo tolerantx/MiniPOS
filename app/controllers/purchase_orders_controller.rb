@@ -1,21 +1,43 @@
-class PurchaseOrdersController < InheritedResources::Base
+class PurchaseOrdersController < ApplicationController
+
   def index
     @search = params[:search] || {}
     @purchase_orders = PurchaseOrder.search(params[:search]).paginate(:page => params[:page])
   end
 
+  def new
+    @purchase_order = PurchaseOrder.new
+  end
+
+  def create
+    @purchase_order = PurchaseOrder.new(permitted_params)
+
+    if @purchase_order.save
+      redirect_to purchase_order_path(@purchase_order)
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+    @purchase_order = PurchaseOrder.find(params[:id])
+  end
+
   def update
     @purchase_order = PurchaseOrder.find(params[:id])
-    @purchase_order.receive
-    @purchase_order.update_attribute :received_at, Time.now
 
-    # if @purchase_order.update_attributes(permitted_params_update)
+    if @purchase_order.update(permitted_params)
+      @purchase_order.receive
+      @purchase_order.update_attribute :received_at, Time.now
 
-    #   redirect_to purchase_order_path(@purchase_order)
-    # else
-    #   render :action => 'edit'
-    # end
-    update! { purchase_order_path(resource) }
+      redirect_to purchase_order_path(@purchase_order)
+    else
+      render 'edit'
+    end
+  end
+
+  def show
+    @purchase_order = PurchaseOrder.find(params[:id])
   end
 
   def receive
@@ -34,7 +56,7 @@ class PurchaseOrdersController < InheritedResources::Base
   private
 
   def permitted_params
-    params.permit(:purchase_order => [
+    params[:purchase_order].permit(
       :id,
       :supplier_id,
       :received_at,
@@ -52,6 +74,6 @@ class PurchaseOrdersController < InheritedResources::Base
         :_destroy,
         :id
       ]
-    ])
+    )
   end
 end
