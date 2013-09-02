@@ -19,6 +19,13 @@
 //= require turbolinks
 //= require_tree .
 
+$(function(){
+  $('#btn-sign-out').click( function(e) {
+    e.preventDefault();
+    $('#form_signout .btn-link').click();
+  })
+})
+
 new function($) {
   $.fn.myAutocomplete = function(settings) {
     settings = settings || {};

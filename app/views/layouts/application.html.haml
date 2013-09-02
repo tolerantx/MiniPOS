@@ -12,3 +12,7 @@
     .container
       = render :partial => "layouts/notifications"
       = yield
+
+      #form_signout{:style => "display: none;"}
+        = button_to t("links.sign_out"), {:action => "destroy", :controller => "devise/sessions"}, {:class => "btn-link", :method => :delete}
+

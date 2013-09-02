@@ -1,5 +1,6 @@
 MiniPos::Application.routes.draw do
 
+  devise_for :users
   resources :purchase_order_details
 
   resources :purchase_orders do

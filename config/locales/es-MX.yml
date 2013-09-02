@@ -2,6 +2,9 @@ es-MX:
   system:
     name: "Sistema"
 
+  links:
+    sign_out: "Salir"
+
   errors:
     header: "Se han encontrado %{number} error(es):"
     ticket:

@@ -62,6 +62,8 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.item :unit, t("navigation.units"), units_path
     end
 
+    primary.item :sign_out, content_tag(:i, "", :class => "icon-off icon-white"), "#", {:id => "btn-sign-out"}
+
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
