@@ -40,8 +40,8 @@ group :development do
   # gem 'rack-mini-profiler', '~> 0.1.27'
 end
 
-gem 'unicorn'
 group :production do
+  gem 'unicorn'
   gem 'rails_12factor'
 end
 
