@@ -1,0 +1,120 @@
+= nested_form_for @supplier, :html => { :class => 'form-horizontal' } do |f|
+  = error_messages(@supplier)
+  .row
+    .span4
+      .control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name, :class => 'text_field string required'
+
+  %h3 Dirección
+  = f.fields_for :address do |address_form|
+    .row
+      .span4
+        .control-group
+          = address_form.label :address1, :class => 'control-label'
+          .controls
+            = address_form.text_field :address1, :class => 'text_field'
+
+      .span4
+        .control-group
+          = address_form.label :address2, :class => 'control-label'
+          .controls
+            = address_form.text_field :address2, :class => 'text_field'
+    .row
+      .span4
+        .control-group
+          = address_form.label :state, :class => 'control-label'
+          .controls
+            = address_form.text_field :state, :class => 'text_field'
+      .span4
+        .control-group
+          = address_form.label :city, :class => 'control-label'
+          .controls
+            = address_form.text_field :city, :class => 'text_field'
+    .row
+      .span4
+        .control-group
+          = address_form.label :town, :class => 'control-label'
+          .controls
+            = address_form.text_field :town, :class => 'text_field'
+      .span4
+        .control-group
+          = address_form.label :location, :class => 'control-label'
+          .controls
+            = address_form.text_field :location, :class => 'text_field'
+    .row
+      .span4
+        .control-group
+          = address_form.label :zip_code, :class => 'control-label'
+          .controls
+            = address_form.text_field :zip_code, :class => 'text_field'
+    .row
+      .span9
+        .control-group
+          = address_form.label :comments, :class => 'control-label'
+          .controls
+            = address_form.text_area :comments, :cols => 30, :rows => 5, :class => 'text_area'
+
+  %h3
+    = t("labels.phone")
+    %span
+      = f.link_to_add t("labels.add_phone"), :phones, "data-target" => "#phones"
+
+  %table
+    %thead
+      %tr
+        %th
+          = Phone.human_attribute_name(:number)
+        %th
+          = Phone.human_attribute_name(:phone_type)
+        %th
+    %tbody#phones
+      = f.fields_for :phones, :wrapper => false do |phone_form|
+        %tr.fields
+          %td
+            = phone_form.text_field :number
+          %td
+            = phone_form.select :phone_type, Phone::TYPES, { :include_blank => t("labels.select") }
+          %td
+            = phone_form.link_to_remove t("labels.delete_phone")
+
+  %h3
+    = t("labels.email")
+    %span
+      = f.link_to_add t("labels.add_email"), :emails, "data-target" => "#emails"
+  %table
+    %thead
+      %tr
+        %th
+          = Email.human_attribute_name(:email)
+        %th
+          = Email.human_attribute_name(:email_type)
+        %th
+
+    %tbody#emails
+      = f.fields_for :emails, :wrapper => false do |email_form|
+        %tr.fields
+          %td
+            = email_form.text_field :email
+          %td
+            = email_form.select :email_type, Email::TYPES, { :include_blank => t("labels.select") }
+          %td
+            = email_form.link_to_remove t("labels.delete_email")
+
+  %h3= t("labels.products")
+
+  %table
+    - size = Product.count >= 3 ? Product.count : 3
+    - Product.all.in_groups_of((size/3).ceil).transpose.each do |row|
+      %tr
+        - row.each do |product|
+          %td.span2
+            - if product
+              = hidden_field_tag "supplier[product_ids][]", nil
+              = check_box_tag "supplier[product_ids][]", product.id, @supplier.product_ids.include?(product.id), id: dom_id(product)
+              = product.name
+
+  .form-actions
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), suppliers_path, :class => 'btn'
+    = f.submit nil, :class => 'btn btn-primary'

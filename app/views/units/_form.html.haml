@@ -1,0 +1,12 @@
+= form_for(@unit) do |f|
+  = error_messages(@unit)
+  .row
+    .span4
+      .control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name
+
+  .form-actions
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), units_path, :class => 'btn'
+    = f.submit nil, :class => 'btn btn-primary'

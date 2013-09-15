@@ -1,0 +1,62 @@
+- model_class = Ticket
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.titleize
+
+.row
+  .span8
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+            = Item.human_attribute_name(:code)
+          %th
+            = Item.human_attribute_name(:description)
+          %th
+            = Item.human_attribute_name(:quantity)
+          %th
+            = Item.human_attribute_name(:unit_value)
+          %th
+            = Item.human_attribute_name(:amount)
+
+      %tbody#items
+        - @ticket.items.each do |item|
+          %tr.fields
+            %td
+              = item.code
+            %td
+              = item.description
+            %td
+              = item.quantity
+            %td
+              = number_to_currency(item.unit_value)
+            %td
+              = number_to_currency(item.amount)
+
+  .span4
+    .block
+      %p
+        %strong= Recipient.human_attribute_name(:full_name)
+        = @ticket.recipient.full_name if @ticket.recipient
+      %p
+        %strong= model_class.human_attribute_name(:total)
+        = number_to_currency @ticket.total
+      %p
+        %strong= model_class.human_attribute_name(:status)
+        = t("ticket_state.#{@ticket.state}")
+
+      %h5= t("labels.customer_information")
+      %p
+        = @ticket.recipient.full_name
+
+      - if @ticket.recipient.address
+        %p
+          %strong= t("labels.address")
+          = full_address(@ticket.recipient.address)
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")),
+              tickets_path, :class => 'btn'
+  = link_to t('ticket_state.cancel'),
+              cancel_ticket_path(@ticket),
+              :data => { :confirm => t('ticket_state.confirm.cancel') },
+              :class => 'btn btn-danger' if @ticket.created? || @ticket.delivered?

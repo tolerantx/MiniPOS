@@ -1,10 +1,45 @@
-Alivio::Application.routes.draw do
+MiniPos::Application.routes.draw do
+
+  devise_for :users
+  resources :purchase_order_details
+
+  resources :purchase_orders do
+    member do
+      get 'cancel'
+      get 'receive'
+    end
+  end
+
+  resources :suppliers
+  resources :tickets do
+    member do
+      get 'cancel'
+      get 'deliver'
+    end
+  end
+  resources :units
+  resources :categories
+  resources :products do
+    collection do
+      get 'search_code'
+      get 'search_name'
+    end
+  end
+
+  # get "customers/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  resources :customers do
+    collection do
+      get 'search_name'
+    end
+  end
 
+  root 'customers#index'
+
+  # resources :versions
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -39,7 +74,7 @@ Alivio::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

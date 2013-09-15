@@ -1,0 +1,47 @@
+.row
+  .span9
+    - model_class = Category
+    .page-hader
+      %h1= t('.title', :default => model_class.model_name.human.pluralize.titleize)
+
+    = form_tag categories_path, :method => :get, :id => 'categories-search-form', :class => 'well form-inline' do
+      %label
+        %strong= t("labels.search")
+      = text_field_tag 'search[terms]', @search[:terms], :placeholder => t("placeholder.search")
+      = submit_tag 'Buscar', :id => 'categories-form-button', :class => 'btn btn-small btn-primary'
+      = link_to t('labels.clear'), categories_path, :class => 'btn btn-small'
+
+    %table.table.table-hover.table-striped.table-condensed
+      %thead
+        %tr
+          %th= model_class.human_attribute_name(:name)
+          %th= model_class.human_attribute_name(:created_at)
+          %th= t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @categories.each do |category|
+          %tr
+            %td
+              = link_to category.name, category_path(category)
+            %td=l category.created_at, :format => :short
+            %td
+              = link_to t('.show', :default => t("helpers.links.show")),
+                          category_path(category), :class => 'btn btn-mini btn-warning'
+              = link_to t('.edit', :default => t("helpers.links.edit")),
+                          edit_category_path(category), :class => 'btn btn-mini btn-primary'
+              = link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          category_path(category),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-mini btn-danger'
+
+    = pagination @categories
+
+  .span3
+    .text-right
+      = link_to t('.new', :default => t("helpers.links.new")), new_category_path, :class => 'btn btn-primary'
+
+    .block
+      %h5= t("labels.general_information")
+      %p
+        %strong= t("labels.total_records")
+        = @categories.count

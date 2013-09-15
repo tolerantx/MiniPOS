@@ -1,0 +1,66 @@
+.row
+  .span8
+    = nested_form_for @purchase_order, :html => { :class => 'inline' } do |f|
+      = error_messages(@purchase_order)
+      .row
+        .span4
+          .control-group
+            = f.label :supplier_id, :class => 'control-label'
+            .controls
+              = f.collection_select :supplier_id, Supplier.all, :id, :name, {:include_blank => t("select_blank")}, :class => 'text_field'
+
+        .span4
+          .text-right
+            = f.link_to_add t("labels.add_item"), :items, "data-target" => "#purchase_order_details", :class => "btn btn-primary"
+
+      %table
+        %thead
+          %tr
+            %th
+              = Item.human_attribute_name(:code)
+            %th
+              = Item.human_attribute_name(:description)
+            %th
+              = Item.human_attribute_name(:quantity)
+            %th
+              = Item.human_attribute_name(:unit_value)
+            %th
+              = Item.human_attribute_name(:amount)
+            %th
+        %tbody#purchase_order_details
+          = f.fields_for :items, :wrapper => false do |detail|
+            %tr.fields
+              %td
+                = detail.hidden_field :product_id, :class => 'detail_id'
+                = detail.text_field :code, :class => 'input-mini detail_code', :'data-search-url' => '/products/search_code'
+              %td
+                = detail.text_field :description, :class => 'detail_description'
+              %td
+                = detail.text_field :quantity_required, :class => 'input-mini detail_quantity_required', 'data-only-number' => true
+              %td
+                .input-prepend
+                  %span.add-on $
+                  = detail.text_field :unit_value, :class => 'input-small detail_purchase_price text-right', 'data-only-number' => true
+              %td
+                .input-prepend
+                  %span.add-on $
+                  %span.input-small.uneditable-input.detail_amount.text-right
+                    = "%.2f" % detail.object.amount unless detail.object.amount.nil?
+                  = detail.hidden_field :amount, :class => 'detail_amount'
+              %td
+                = detail.link_to_remove '', :class => 'icon-remove'
+
+      .form-actions
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), purchase_orders_path, :class => 'btn'
+        = f.submit nil, :class => 'btn btn-primary'
+
+  .span4
+    .block
+      %p
+        %strong= t("labels.total")
+        %span#total
+          = "$ #{@purchase_order.total_purchase_orders}" if @purchase_order.total_purchase_orders
+
+
+  .row
+    .span12

@@ -1,0 +1,90 @@
+.row.span12
+  = nested_form_for @product, :html => { :class => 'form-vertical' } do |f|
+    .row
+      = error_messages(@product)
+      .span4
+        .control-group
+          = f.label :name, :class => 'control-label'
+          .controls
+            = f.text_field :name, :class => 'text_field span3'
+
+        .control-group
+          = f.label :code, :class => 'control-label'
+          .controls
+            = f.text_field :code, :class => 'text_field span3'
+
+        .control-group
+          = f.label :price, :class => 'control-label'
+          .controls
+            = f.text_field :price, :class => 'text_field span3'
+
+        .control-group
+          = f.label :unit_id, :class => 'control-label'
+          .controls
+            = f.collection_select :unit_id, Unit.all, :id, :name, {:include_blank => t("select_blank")}, :class => 'text_field span3'
+
+        .control-group
+          = f.label :min_stock, :class => 'control-label'
+          .controls
+            = f.text_field :min_stock, :class => 'text_field span3'
+
+        .control-group
+          = f.label :existence, :class => 'control-label'
+          .controls
+            = f.text_field :existence, :class => 'text_field span3'
+
+      .span4
+        .control-group
+          = f.label :short_name, :class => 'control-label'
+          .controls
+            = f.text_field :short_name, :class => 'text_field span3'
+
+        .control-group
+          = f.label :bar_code, :class => 'control-label'
+          .controls
+            = f.text_field :bar_code, :class => 'text_field span3'
+
+        .control-group
+          = f.label :purchase_price, :class => 'control-label'
+          .controls
+            = f.text_field :purchase_price, :class => 'text_field span3'
+
+        .control-group
+          = f.label :quantity_package, :class => 'control-label'
+          .controls
+            = f.text_field :quantity_package, :class => 'text_field span3'
+
+        .control-group
+          = f.label :max_stock, :class => 'control-label'
+          .controls
+            = f.text_field :max_stock, :class => 'text_field span3'
+
+        .control-group
+          = f.label :comments, :class => 'control-label'
+          .controls
+            = f.text_area :comments, :class => 'text_field span3'
+
+      .span3
+        .block
+          %h5= t("labels.categories")
+
+          %ul.unstyled
+            - Category.all.each do |category|
+              %li
+                = hidden_field_tag "product[category_ids][]", nil
+                = check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id), id: dom_id(category)
+                = category.name
+
+          %h5= t("labels.suppliers")
+
+          %ul.unstyled
+            - Supplier.all.each do |supplier|
+              %li
+                = hidden_field_tag "product[supplier_ids][]", nil
+                = check_box_tag "product[supplier_ids][]", supplier.id, @product.supplier_ids.include?(supplier.id), id: dom_id(supplier)
+                = supplier.name
+
+    .row
+      .form-actions
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), products_path, :class => 'btn'
+        = f.submit nil, :class => 'btn btn-primary'

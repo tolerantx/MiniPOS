@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Alivio::Application.load_tasks
+MiniPos::Application.load_tasks

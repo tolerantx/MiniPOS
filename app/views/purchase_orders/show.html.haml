@@ -1,0 +1,64 @@
+- model_class = PurchaseOrder
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.titleize
+
+.row
+  .span8
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+            = Item.human_attribute_name(:code)
+          %th
+            = Item.human_attribute_name(:description)
+          %th
+            = Item.human_attribute_name(:quantity)
+          %th
+            = Item.human_attribute_name(:unit_value)
+          %th
+            = Item.human_attribute_name(:amount)
+
+      %tbody#details
+        - @purchase_order.items.each do |detail|
+          %tr.fields
+            %td
+              = detail.code
+            %td
+              = detail.description
+            %td
+              = detail.quantity
+            %td
+              = number_to_currency(detail.unit_value)
+            %td
+              = number_to_currency(detail.amount)
+
+  .span4
+    .block
+      %p
+        %strong= Supplier.human_attribute_name(:name)
+        = @purchase_order.supplier.name if @purchase_order.supplier
+      %p
+        %strong= model_class.human_attribute_name(:total)
+        = number_to_currency @purchase_order.total
+      %p
+        %strong= model_class.human_attribute_name(:status)
+        = t("purchase_order_details_state.#{@purchase_order.state}")
+
+      %h5= t("labels.customer_information")
+      %p
+        = @purchase_order.supplier.name
+
+      - if @purchase_order.supplier.address
+        %p
+          %strong= t("labels.address")
+          = full_address(@purchase_order.supplier.address)
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")),
+              purchase_orders_path, :class => 'btn'
+  = link_to t('.edit', :default => t("purchase_orders.receive")),
+              edit_purchase_order_path(@purchase_order), :class => 'btn btn-success' if @purchase_order.created?
+  = link_to t('purchase_order_state.cancel'),
+              cancel_purchase_order_path(@purchase_order),
+              :data => { :confirm => t('purchase_order_state.confirm.cancel') },
+              :class => 'btn btn-danger' if @purchase_order.created? || @purchase_order.received?

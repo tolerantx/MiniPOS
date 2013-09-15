@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ticket_id: 1
+  quantity: 9.99
+  unit: MyString
+  code: MyString
+  description: MyString
+  unit_value: 9.99
+  amount: 9.99
+
+two:
+  ticket_id: 1
+  quantity: 9.99
+  unit: MyString
+  code: MyString
+  description: MyString
+  unit_value: 9.99
+  amount: 9.99
