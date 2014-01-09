@@ -7,13 +7,27 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore database.yml
+/config/database.yml
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/tmp
+/tmp/*
+/public/system/*
+/spec/tmp/*
+
 Gemfile.lock
 db/schema.rb
 .env
+**.orig
+chromedriver.log
+webrat.log
+libpeerconnection.log
+
+*.swp
+*.sassc
+.sass-cache
