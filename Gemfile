@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-gem 'pg', '~> 0.16.0'
+gem 'sqlite3', '~> 1.3.7'
 gem 'twitter-bootstrap-rails', '~> 2.2.7'
 gem 'sass-rails', '~> 4.0.0'
 gem 'therubyracer', :platforms => :ruby
@@ -41,6 +41,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'pg' #, '~> 0.16.0'
 end
 
 # Use ActiveModel has_secure_password
