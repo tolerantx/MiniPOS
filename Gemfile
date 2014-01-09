@@ -36,10 +36,12 @@ group :doc do
 end
 
 group :development do
+  gem 'sqlite3'
   # gem 'rack-mini-profiler', '~> 0.1.27'
 end
 
 group :production do
+  gem 'unicorn'
   gem 'rails_12factor'
   gem 'pg' #, '~> 0.16.0'
 end
