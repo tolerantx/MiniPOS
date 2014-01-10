@@ -31,22 +31,22 @@
           = f.fields_for :items, :wrapper => false do |detail|
             %tr.fields
               %td
-                = detail.hidden_field :product_id, :class => 'detail_id'
-                = detail.text_field :code, :class => 'input-mini detail_code', :'data-search-url' => '/products/search_code'
+                = detail.hidden_field :product_id, :class => 'product_id'
+                = detail.text_field :code, :class => 'input-mini product_code', :'data-search-url' => '/products/search_code'
               %td
-                = detail.text_field :description, :class => 'detail_description'
+                = detail.text_field :description, :class => 'product_description'
               %td
-                = detail.text_field :quantity_required, :class => 'input-mini detail_quantity_required', 'data-only-number' => true
-              %td
-                .input-prepend
-                  %span.add-on $
-                  = detail.text_field :unit_value, :class => 'input-small detail_purchase_price text-right', 'data-only-number' => true
+                = detail.text_field :quantity_required, :class => 'input-mini product_quantity_required', 'data-only-number' => true
               %td
                 .input-prepend
                   %span.add-on $
-                  %span.input-small.uneditable-input.detail_amount.text-right
+                  = detail.text_field :unit_value, :class => 'input-small product_unit_value text-right', 'data-only-number' => true
+              %td
+                .input-prepend
+                  %span.add-on $
+                  %span.input-small.uneditable-input.product_amount.text-right
                     = "%.2f" % detail.object.amount unless detail.object.amount.nil?
-                  = detail.hidden_field :amount, :class => 'detail_amount'
+                  = detail.hidden_field :amount, :class => 'product_amount'
               %td
                 = detail.link_to_remove '', :class => 'icon-remove'
 
