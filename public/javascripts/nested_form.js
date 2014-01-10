@@ -44,7 +44,7 @@
 
       var field = this.insertFields(content, assoc, link);
 
-      // added focus to first element added
+      // Focus to first element added
       var fieldToFocus = field.find('td:first').find('input[type="text"]');
       fieldToFocus.focus();
 
