@@ -43,6 +43,11 @@
       content     = $.trim(content.replace(regexp, new_id));
 
       var field = this.insertFields(content, assoc, link);
+
+      // added focus to first element added
+      var fieldToFocus = field.find('td:first').find('input[type="text"]');
+      fieldToFocus.focus();
+
       // bubble up event upto document (through form)
       field
         .trigger({ type: 'nested:fieldAdded', field: field })
