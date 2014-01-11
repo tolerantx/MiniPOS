@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-gem 'sqlite3', '~> 1.3.7'
 gem 'twitter-bootstrap-rails', '~> 2.2.7'
 gem 'sass-rails', '~> 4.0.0'
 gem 'therubyracer', :platforms => :ruby
@@ -36,7 +35,7 @@ group :doc do
 end
 
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.7'
   # gem 'rack-mini-profiler', '~> 0.1.27'
 end
 
