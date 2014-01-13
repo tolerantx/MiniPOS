@@ -1,24 +1,15 @@
+
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  template: template0
+  database: mini_pos
   pool: 5
-  timeout: 5000
+  username: mini_pos
+  password:
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
-# development:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: mini_pos_development
-#   pool: 5
-#   username: mini_pos
-#   password:
-test:
   adapter: postgresql
-  encoding: unicode
+  template: template0
   database: mini_pos_test
   pool: 5
   username: mini_pos
