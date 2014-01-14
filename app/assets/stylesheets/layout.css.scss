@@ -1,3 +1,16 @@
+.login {
+  h2 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+
+  .gray_square {
+    input[type=email], input[type=password] {
+      width: 95%;
+    }
+  }
+}
 
 h3 {
   span { font-size: .6em; }

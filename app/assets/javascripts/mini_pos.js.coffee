@@ -53,11 +53,11 @@ $ ->
   # ====================================================================
   # This methods set behavior of keys of the keyboard
   # ====================================================================
-  $('body').keypress (e) ->
+  $('body').keydown (e) ->
     keynum =  if (document.all) then e.keyCode else e.which
 
     # Add new item to the form with F2 key
-    $('a.add_nested_fields').trigger('click') if keynum is 124 #113
+    $('a.add_nested_fields').trigger('click') if keynum is 113
 
   # ====================================================================
   # This methods allows to put only numbers and dot character in a text field
@@ -82,4 +82,6 @@ $ ->
       el.find('input.product_' + key).val(value)
       el.find('span.product_' + key).text(value)
     )
+
+    $('.product_quantity').val('1') if $('.product_quantity').val() is ''
     $('.product_unit_value').trigger('change')

@@ -1,6 +1,6 @@
 es-MX:
   system:
-    name: "Sistema"
+    name: "MiniPOS"
 
   links:
     sign_out: "Salir"
@@ -35,7 +35,7 @@ es-MX:
     search: "Buscar"
     clear: "Limpiar"
     total: "Total"
-    add_item: "Agregar Concepto"
+    add_item: "Agregar Concepto [F2]"
     categories: "Categorias"
     suppliers: "Proveedores"
     products: "Productos"
@@ -103,6 +103,9 @@ es-MX:
       purchase_order: "Orden de compra"
 
     attributes:
+      user:
+        email: "Correo Electrónico"
+        password: "Contraseña"
       customer:
         first_name: "Nombre(s)"
         last_name: "Apellido(s)"
