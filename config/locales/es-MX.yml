@@ -35,7 +35,7 @@ es-MX:
     search: "Buscar"
     clear: "Limpiar"
     total: "Total"
-    add_item: "Agregar Concepto"
+    add_item: "Agregar Concepto [F2]"
     categories: "Categorias"
     suppliers: "Proveedores"
     products: "Productos"
