@@ -82,4 +82,6 @@ $ ->
       el.find('input.product_' + key).val(value)
       el.find('span.product_' + key).text(value)
     )
+
+    $('.product_quantity').val('1') if $('.product_quantity').val() is ''
     $('.product_unit_value').trigger('change')
