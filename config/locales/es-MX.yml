@@ -102,6 +102,7 @@ es-MX:
       version: "Bitácora"
       purchase_order: "Orden de compra"
       session: "Usuarios"
+      password: "Cambiar contraseña"
 
     attributes:
       user:
@@ -272,3 +273,9 @@ es-MX:
   sessions:
     new:
       title: "Iniciar Sesión"
+
+  passwords:
+    new:
+      title: "¿Olvidaste tu contraseña?"
+    edit:
+      title: "Nueva contraseña"
