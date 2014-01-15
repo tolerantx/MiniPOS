@@ -1,0 +1,21 @@
+.span3.offset4.gray_square.block
+  %h2= t('system.name')
+  %h4= t('devise.change_password')
+
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+    = devise_error_messages!
+    = f.hidden_field :reset_password_token
+
+    .row
+      .span3
+        .control-group
+          = f.label :password, t('devise.passwords.edit_password'), :class => 'control-label'
+          .controls
+            = f.password_field :password, :autofocus => true
+
+        .control-group
+          = f.label :password_confirmation, t('devise.passwords.password_confirmation')
+          .controls
+            = f.password_field :password_confirmation
+
+    = f.submit t('devise.passwords.change_my_password'), :class => 'btn btn-primary'
