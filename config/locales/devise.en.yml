@@ -23,6 +23,12 @@ en:
         subject: "Reset password instructions"
       unlock_instructions:
         subject: "Unlock Instructions"
+      reset:
+        hello: "Hello %{email}!"
+        link: "Change my password"
+        message1: "Someone has requested a link to change your password. You can do this through the link below."
+        message2: "If you didn't request this, please ignore this email."
+        message3: "Your password won't change until you access the link above and create a new one."
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
@@ -48,6 +54,8 @@ en:
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
     sign_in: "Sign in"
+    forgot_password: "Forgot your password?"
+    send_reset_password: "Send me reset password instructions"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

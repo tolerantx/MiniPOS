@@ -1,0 +1,14 @@
+.span3.offset4.gray_square.block
+  %h2= t('system.name')
+  %h4= t('devise.forgot_password')
+
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    = devise_error_messages!
+    .row
+      .span3
+        .control-group
+          = f.label :email, :class => 'control-label'
+          .controls
+            = f.email_field :email, :autofocus => true
+
+    = f.submit t('devise.send_reset_password'), :class => 'btn btn-primary'
