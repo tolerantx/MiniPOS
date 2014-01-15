@@ -40,6 +40,9 @@ es-MX:
       send_paranoid_instructions: "Si tu correo electónico existe en nuestra base de datos, recibirás un enlace para recuperar tu contraseña a tu correo electrónico en unos minutos."
       updated: "Tu contraseña ha cambiado exitosamente. Ahora has iniciado sesión."
       updated_not_active: "Tu contraseña ha cambiado exitosamente."
+      edit_password: "Nueva contraseña"
+      password_confirmation: "Confirmar nueva contraseña"
+      change_my_password: "Cambiar mi contraseña"
     registrations:
       destroyed: "Adiós! Tu cuenta ha sudo cancelada existosamente. Esperamos verte pronto de nuevo."
       signed_up: "Bienvenido! Te has registrado exitosamente."
@@ -58,6 +61,7 @@ es-MX:
     sign_in: "Ingresar"
     forgot_password: "¿Olvidaste tu contraseña?"
     send_reset_password: "Restablecer contraseña"
+    change_password: "Cambia tu contraseña"
   errors:
     messages:
       already_confirmed: "ya fue confirmada, por favor intenta iniciar sesión"
