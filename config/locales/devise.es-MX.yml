@@ -66,5 +66,5 @@ es-MX:
       not_found: "no encontrado"
       not_locked: "no fue bloqueado"
       not_saved:
-        one: "1 error prohibió ésto %{resource}:"
-        other: "%{count} errores prohibieron ésto:"
+        one: "Se encontró un error:"
+        other: "Se han encontrado %{count} errores:"

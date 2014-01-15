@@ -56,3 +56,12 @@ h3 {
     &:hover, &:focus { text-decoration: underline; }
   }
 }
+
+.alert, .alert-error {
+  h2 {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 10px 0;
+    text-rendering: optimizelegibility;
+  }
+}
