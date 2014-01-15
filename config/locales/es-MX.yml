@@ -101,6 +101,7 @@ es-MX:
       supplier: "Proveedor"
       version: "Bitácora"
       purchase_order: "Orden de compra"
+      session: "Usuarios"
 
     attributes:
       user:
@@ -267,3 +268,7 @@ es-MX:
     show:
       title: "Orden de compra "
     receive: "Recibir orden de compra"
+
+  sessions:
+    new:
+      title: "Iniciar Sesión"
