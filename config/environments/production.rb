@@ -84,7 +84,7 @@ MiniPos::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              "smtp.gmail.com",
     port:                 587,
-    domain:               "mail.google.com",
+    domain:               ENV["MINIPOS_HOST"],
     authentication:       "login",
     enable_starttls_auto: true,
     user_name:            ENV["GMAIL_USERNAME"],
