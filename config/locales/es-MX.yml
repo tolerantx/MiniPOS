@@ -277,5 +277,9 @@ es-MX:
   passwords:
     new:
       title: "¿Olvidaste tu contraseña?"
+    create:
+      title: "¿Olvidaste tu contraseña?"
+    update:
+      title: "Nueva contraseña"
     edit:
       title: "Nueva contraseña"
