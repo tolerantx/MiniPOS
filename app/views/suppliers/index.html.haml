@@ -3,7 +3,7 @@
   .span9
     - model_class = Supplier
     .page-header
-      %h1= t('.title', :default => model_class.model_name.human.pluralize.titleize)
+      %h1= page_header model_class
 
     = form_tag suppliers_path, :method => :get, :id => 'suppliers-search-form', :class => 'well form-inline' do
       %label

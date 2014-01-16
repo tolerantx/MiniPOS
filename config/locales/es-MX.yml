@@ -182,104 +182,78 @@ es-MX:
         created_at: "Fecha"
 
   customers:
-    index:
-      title: "Clientes"
-    new:
-      title: "Nuevo cliente"
-    create:
-      title: "Crear cliente"
-    edit:
-      title: "Editar "
-    show:
-      title: "Cliente "
+    title:
+      index: "Clientes"
+      new: "Nuevo"
+      create: "Crear"
+      edit: "Editar"
+      update: "Actualizar "
+      show: "Cliente "
 
   categories:
-    index:
-      title: "Categorias"
-    new:
-      title: "Nueva categoria"
-    create:
-      title: "Crear categoria"
-    edit:
-      title: "Editar "
-    show:
-      title: "Categoria "
+    title:
+      index: "Categorías"
+      new: "Nueva"
+      create: "Crear"
+      edit: "Editar"
+      update: "Actualizar"
+      show: "Categoría"
 
   units:
-    index:
-      title: "Unidades"
-    new:
-      title: "Nueva unidad"
-    create:
-      title: "Crear unidad"
-    edit:
-      title: "Editar "
-    show:
-      title: "Unidad "
+    title:
+      index: "Unidades"
+      new: "Nueva"
+      create: "Crear"
+      edit: "Editar"
+      update: "Actualizar"
+      show: "Unidad"
 
   products:
-    index:
-      title: "Productos"
-    new:
-      title: "Nuevo producto"
-    create:
-      title: "Crear producto"
-    edit:
-      title: "Editar "
-    show:
-      title: "Producto "
+    title:
+      index: "Productos"
+      new: "Nuevo"
+      create: "Crear"
+      edit: "Editar "
+      update: "Actualizar"
+      show: "Producto"
 
   tickets:
-    index:
-      title: "Tickets"
-    new:
-      title: "Nuevo ticket"
-    create:
-      title: "Crear ticket"
-    edit:
-      title: "Editar "
-    show:
-      title: "Ticket "
+    title:
+      index: "Tickets"
+      new: "Nuevo"
+      create: "Crear"
+      edit: "Editar"
+      update: "Actualizar"
+      show: "Ticket"
 
   suppliers:
-    index:
-      title: "Proveedores"
-    new:
-      title: "Nuevo proveedor"
-    create:
-      title: "Crear proveedor"
-    edit:
-      title: "Editar "
-    show:
-      title: "Proveedor "
+    title:
+      index: "Proveedores"
+      new: "Nuevo"
+      create: "Crear"
+      edit: "Editar"
+      show: "Proveedor"
 
   versions:
-    index:
-      title: "Bitácora"
+    title:
+      index: "Bitácora"
 
   purchase_orders:
-    index:
-      title: "Ordenes de compra"
-    new:
-      title: "Nueva orden de compra"
-    create:
-      title: "Crear orden de compra"
-    edit:
-      title: "Editar "
-    show:
-      title: "Orden de compra "
+    title:
+      index: "Ordenes de compra"
+      new: "Nueva"
+      create: "Crear"
+      edit: "Editar"
+      show: "Orden de compra"
     receive: "Recibir orden de compra"
 
   sessions:
-    new:
-      title: "Iniciar Sesión"
+    title:
+      new: "Iniciar Sesión"
 
   passwords:
-    new:
-      title: "¿Olvidaste tu contraseña?"
-    create:
-      title: "¿Olvidaste tu contraseña?"
-    update:
-      title: "Nueva contraseña"
-    edit:
-      title: "Nueva contraseña"
+    title:
+      new: "¿Olvidaste tu contraseña?"
+      create: "¿Olvidaste tu contraseña?"
+      update: "Nueva contraseña"
+      edit: "Nueva contraseña"

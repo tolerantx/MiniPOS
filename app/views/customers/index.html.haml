@@ -3,7 +3,7 @@
   .span9
     - model_class = Customer
     .page-header
-      %h1= t('.title', :default => model_class.model_name.human.pluralize.titleize)
+      %h1= page_header model_class
 
     = form_tag customers_path, :method => :get, :id => 'customers-search-form', :class => 'well form-inline' do
       %label

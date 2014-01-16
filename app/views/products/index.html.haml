@@ -2,7 +2,7 @@
   .span9
     - model_class = Product
     .page-hader
-      %h1= t('.title', :default => model_class.model_name.human.pluralize.titleize)
+      %h1= page_header model_class
 
       = form_tag products_path, :method => :get, :id => 'products-search-form', :class => 'well form-inline' do
         %label
