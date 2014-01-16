@@ -51,6 +51,14 @@ module ApplicationHelper
   end
 
   def title_page
-    "#{t("#{controller_name}.#{action_name}.title")} | #{t("activerecord.models.#{controller_name.to_s.singularize}",:count => 2)} - #{t('system.name')}"
+    "#{t("#{controller_name}.title.#{action_name}")} - #{t("activerecord.models.#{controller_name.to_s.singularize}",:count => 2)} | #{t('system.name')}"
+  end
+
+  def page_header(model_class, options={})
+    model_name      = model_class.model_name
+    action          = t("#{model_name.plural}.title.#{action_name}")
+    options[:title] ||= false
+
+    "#{action} #{model_name.human.titleize.downcase if options[:title]}"
   end
 end

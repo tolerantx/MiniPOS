@@ -2,7 +2,7 @@
   .span9
     - model_class = PurchaseOrder
     .page-hader
-      %h1= t('.title', :default => model_class.model_name.human.pluralize.titleize)
+      %h1= page_header model_class
 
     = form_tag purchase_orders_path, :method => :get, :id => 'purchase_orders-search-form', :class => 'well form-inline' do
       %label
