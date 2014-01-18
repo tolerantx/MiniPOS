@@ -23,7 +23,7 @@
           %tr
             %td
               = link_to supplier.name, supplier_path(supplier)
-            %td=l supplier.created_at, :format => :short
+            %td=l supplier.created_at.to_date
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           supplier_path(supplier), :class => 'btn btn-mini btn-warning'

@@ -37,7 +37,7 @@
               %span{:class => "btn btn-mini disabled #{state_highlight(ticket)}"}
                 = t("ticket_state.#{ticket.state}")
             %td
-              = l ticket.created_at, :format => :short
+              = l ticket.created_at.to_date
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           ticket_path(ticket), :class => 'btn btn-mini btn-warning'

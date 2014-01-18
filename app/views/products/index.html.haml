@@ -30,7 +30,7 @@
             %td= number_to_currency product.price
             %td= number_to_currency product.purchase_price
             %td= product.existence
-            %td=l product.created_at, :format => :short
+            %td=l product.created_at.to_date
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           product_path(product), :class => 'btn btn-mini btn-warning'

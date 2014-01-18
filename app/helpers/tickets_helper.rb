@@ -1,12 +1,14 @@
 module TicketsHelper
   def full_address(obj)
-    address = obj.address1
-    address += ", #{obj.address2}"
-    address += ", #{obj.location}"
-    address += ", #{obj.town}"
-    address += ", #{obj.city}"
-    address += ", #{obj.state}"
-    address += ", C.P: #{obj.zip_code}"
+    address = []
+    address << obj.address1 unless obj.address1.blank?
+    address << "#{obj.address2}" unless obj.address2.blank?
+    address << "#{obj.location}" unless obj.location.blank?
+    address << "#{obj.town}" unless obj.town.blank?
+    address << "#{obj.city}" unless obj.city.blank?
+    address << "#{obj.state}" unless obj.state.blank?
+    address << "C.P: #{obj.zip_code}" unless obj.zip_code.blank?
+    address.join(", ")
   end
 
   def state_line(obj)

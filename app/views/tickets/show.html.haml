@@ -35,9 +35,6 @@
   .span4
     .block
       %p
-        %strong= Recipient.human_attribute_name(:full_name)
-        = @ticket.recipient.full_name if @ticket.recipient
-      %p
         %strong= model_class.human_attribute_name(:total)
         = number_to_currency @ticket.total
       %p
@@ -46,12 +43,14 @@
 
       %h5= t("labels.customer_information")
       %p
+        %strong= Recipient.human_attribute_name(:full_name)
         = @ticket.recipient.full_name
 
-      - if @ticket.recipient.address
+      - address = full_address(@ticket.recipient.address)
+      - unless address.blank?
         %p
           %strong= t("labels.address")
-          = full_address(@ticket.recipient.address)
+          = address
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),

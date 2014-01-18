@@ -91,6 +91,10 @@ es-MX:
       cancel: '¿Estás seguro que deseas cancelar la orden de compra?'
       receive: '¿Estás seguro que deseas recibir la orden de compra?'
 
+  date:
+    formats:
+      default: "%d/%b/%Y"
+
   activerecord:
     models:
       customer: "Cliente"
@@ -180,6 +184,8 @@ es-MX:
         state: "Estatus"
         invoice_number: "Número de factura"
         created_at: "Fecha"
+      recipient:
+        full_name: "Nombre"
 
   customers:
     title:

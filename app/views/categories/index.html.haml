@@ -23,7 +23,7 @@
           %tr
             %td
               = link_to category.name, category_path(category)
-            %td=l category.created_at, :format => :short
+            %td=l category.created_at.to_date
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           category_path(category), :class => 'btn btn-mini btn-warning'
