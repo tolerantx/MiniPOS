@@ -22,7 +22,7 @@
           %tr
             %td
               = link_to unit.name, unit_path(unit)
-            %td=l unit.created_at, :format => :short
+            %td=l unit.created_at.to_date
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           unit_path(unit), :class => 'btn btn-mini btn-warning'

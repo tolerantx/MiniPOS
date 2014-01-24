@@ -19,7 +19,7 @@
             %td= version.item_id
             %td= version.event
             %td= version.whodunnit
-            %td=l version.created_at, :format => :short
+            %td=l version.created_at.to_date
 
 
     = pagination @versions

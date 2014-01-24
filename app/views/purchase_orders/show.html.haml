@@ -48,10 +48,11 @@
       %p
         = @purchase_order.supplier.name
 
-      - if @purchase_order.supplier.address
+      - address = full_address(@purchase_order.supplier.address)
+      - unless address.blank?
         %p
           %strong= t("labels.address")
-          = full_address(@purchase_order.supplier.address)
+          = address
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),

@@ -37,7 +37,7 @@
               %span{:class => "btn btn-mini disabled #{state_highlight(purchase_order)}"}
                 = t("purchase_order_state.#{purchase_order.state}")
             %td
-              = l purchase_order.created_at, :format => :short
+              = l purchase_order.created_at.to_date
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           purchase_order_path(purchase_order), :class => 'btn btn-mini btn-warning'

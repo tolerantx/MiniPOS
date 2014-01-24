@@ -23,7 +23,7 @@
           %tr
             %td
               = link_to customer.full_name, customer_path(customer)
-            %td=l customer.created_at, :format => :short
+            %td=l customer.created_at.to_date
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
                           customer_path(customer), :class => 'btn btn-mini btn-warning'
