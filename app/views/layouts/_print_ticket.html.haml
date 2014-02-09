@@ -1,0 +1,42 @@
+#print.hide
+
+  .section
+    %h1 Medicinas Populares el Alivio
+    %h3
+      Domicilio #234 Col. Colonia
+      %br
+      Tel: 3333-2233 Cel: (044) 33-1020-3040
+
+  .section
+    Cliente:
+    = ticket.recipient.full_name
+
+  .section
+    %table
+      %thead
+        %tr
+          %th.quantity Cantidad
+          %th.description Descripción
+          %th.unit_value Precio
+          %th.amount Monto
+
+      %tbody
+        - ticket.items.each do |item|
+          %tr
+            %td.quantity
+              = item.quantity
+            %td.description
+              = item.description
+            %td.unit_value
+              = item.unit_value
+            %td.amount
+              = item.amount
+
+  .section
+    #totals
+      %label
+        Total:
+      %span
+        = ticket.total
+
+    .clear

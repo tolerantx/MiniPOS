@@ -15,6 +15,7 @@
 //= require jquery.ui.autocomplete
 //= require lib/jquery.livequery
 //= require lib/jquery.watch
+//= require lib/jquery.jqprint-0.3
 //= require twitter/bootstrap
 //= require turbolinks
 //= require mini_pos

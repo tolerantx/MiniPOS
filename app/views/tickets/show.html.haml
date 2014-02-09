@@ -59,3 +59,7 @@
               cancel_ticket_path(@ticket),
               :data => { :confirm => t('ticket_state.confirm.cancel') },
               :class => 'btn btn-danger' if @ticket.created? || @ticket.delivered?
+
+= link_to "Imprimir", "", :id => "print_it"
+
+= render partial: "layouts/print_ticket", locals: { ticket: @ticket }

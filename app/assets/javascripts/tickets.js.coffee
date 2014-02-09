@@ -12,3 +12,8 @@ $ ->
       parent.find('span.product_amount').text(amount)
 
       window.total_calculation()
+
+  $('#print_it').click ->
+    console.log "lkahkajshdkajsds"
+    $('#print').jqprint()
+    return false
