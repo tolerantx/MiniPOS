@@ -7,46 +7,39 @@
   .hide { display: block; }
 
   #print {
-    font-size: 12px;
+    font-size: 16px;
     height: 100%;
     width: 10cm;
     position: absolute;
     top: 0;
     left: 0;
-    // line-height: 10px;
 
-    h1, h3 {
+    h1 {
       text-align: center;
-      margin: 0px;
     }
 
     h1 {
-      font-size: 15px;
+      font-size: 18px;
       padding: 10px 0px;
       line-height: 20px;
     }
-
-    h3 {
-      font-size: 11px;
-      line-height: 15px;
+    .center {
+      text-align: center;
     }
 
     table {
-      font-size: 12px;
-      thead th {
-        width: 2.5cm;
-        text-align: left;
-      }
-      thead th.quantity { width: 1.5cm; }
-      thead th.description { width: 3.5cm; }
+      font-size: 16px;
+
+      thead th.quantity { width: 1cm; }
+      thead th.description { width: 4cm; text-align: center; }
       thead th.unit_value,
       thead th.amount {
         width: 2.5cm;
         text-align: center;
       }
 
-      tbody td.quantity { width: 1.5cm; }
-      tbody td.description { width: 3.5cm; }
+      tbody td.quantity { width: 1cm; }
+      tbody td.description { width: 4cm; background: #ccc; }
       tbody td.unit_value,
       tbody td.amount {
         width: 2.5cm;
@@ -56,31 +49,14 @@
 
 
     .section {
+      width: 10cm;
       padding: 5px 0px;
-      border-bottom: 1px solid #eee;
     }
 
     #totals {
-      width: 11em;
+      width: 15em;
       float: right;
-
-      label, span {
-        display: inline-block;
-        margin: 0px;
-      }
-
-      label {
-        width: 3.5em;
-        font-size: 12px !important;
-        font-weight: bold;
-        // background: green;
-      }
-      span {
-        width: 7.2em;
-        // background: blue;
-        text-align: right;
-        float: right;
-      }
+      text-align: right;
     }
 
     .clear { clear: both; }

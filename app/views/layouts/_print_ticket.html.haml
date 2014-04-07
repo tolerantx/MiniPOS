@@ -1,42 +1,45 @@
 #print.hide
 
-  .section
-    %h1 Medicinas Populares el Alivio
-    %h3
-      Domicilio #234 Col. Colonia
-      %br
-      Tel: 3333-2233 Cel: (044) 33-1020-3040
+  %h1 Medicinas Populares el Alivio
 
-  .section
-    Cliente:
-    = ticket.recipient.full_name
+  .center Domicilio 234 Col Colonia
+  .center Tel: 33332233 Cel: (044) 3310203040
+  %br
 
-  .section
-    %table
-      %thead
+  %p
+    = "Fecha: #{l ticket.created_at.to_date}"
+    %br
+    = "Folio: #{ticket.folio}"
+    %br
+    = "Cliente: #{ticket.recipient.full_name}"
+
+  %table
+    %thead
+      %tr
+        %th.quantity Cantidad
+        %th.description Articulo
+        %th.unit_value Precio
+        %th.amount Total
+
+    %tbody
+      - ticket.items.each do |item|
         %tr
-          %th.quantity Cantidad
-          %th.description Descripción
-          %th.unit_value Precio
-          %th.amount Monto
+          %td.quantity= item.quantity
+          %td.description
+            = item.description
+            &nbsp;
+          %td.unit_value= item.unit_value
+          %td.amount= item.amount
 
-      %tbody
-        - ticket.items.each do |item|
-          %tr
-            %td.quantity
-              = item.quantity
-            %td.description
-              = item.description
-            %td.unit_value
-              = item.unit_value
-            %td.amount
-              = item.amount
+  #totals
+    %strong
+      = "Total: #{number_to_currency ticket.total}"
 
-  .section
-    #totals
-      %label
-        Total:
-      %span
-        = ticket.total
+  .clear
 
-    .clear
+  %br
+  = quantity_to_words(ticket.total)
+  %br
+  %p= "Articulos vendidos: #{ticket.items.size}"
+  %br
+  .center= "No es un comprobante con valor fiscal"

@@ -4,6 +4,7 @@ es-MX:
 
   links:
     sign_out: "Salir"
+    print: "Imprimir"
 
   errors:
     header: "Se han encontrado %{number} error(es):"

@@ -13,7 +13,6 @@ $ ->
 
       window.total_calculation()
 
-  $('#print_it').click ->
-    console.log "lkahkajshdkajsds"
+  $('#print_it').click (e) ->
+    e.preventDefault()
     $('#print').jqprint()
-    return false

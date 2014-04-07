@@ -61,4 +61,8 @@ module ApplicationHelper
 
     "#{action} #{model_name.human.titleize.downcase if options[:title]}"
   end
+
+  def quantity_to_words(number)
+    number.to_words.capitalize << ' pesos ' << (number.to_s.split('.')[1] || 0).rjust(2,'0') << '/100 M.N.'
+  end
 end
