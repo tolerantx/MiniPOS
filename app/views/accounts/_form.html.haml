@@ -1,0 +1,12 @@
+= form_for(@account) do |f|
+  = error_messages(@account)
+  .row
+    .span4
+      .control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name
+
+  .form-actions
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), accounts_path, :class => 'btn'
+    = f.submit nil, :class => 'btn btn-primary'

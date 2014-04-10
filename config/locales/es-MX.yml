@@ -63,6 +63,7 @@ es-MX:
     tickets: "Tickets"
     suppliers: "Proveedores"
     purchase_orders: "Ordenes de compra"
+    accounts: "Cuentas"
 
   ticket_state:
     created: "Creado"
@@ -108,6 +109,7 @@ es-MX:
       purchase_order: "Orden de compra"
       session: "Usuarios"
       password: "Cambiar contraseña"
+      account: "Cuenta"
 
     attributes:
       user:
@@ -187,6 +189,9 @@ es-MX:
         created_at: "Fecha"
       recipient:
         full_name: "Nombre"
+      account:
+        name: "Nombre"
+        created_at: "Fecha creación"
 
   customers:
     title:
@@ -264,3 +269,12 @@ es-MX:
       create: "¿Olvidaste tu contraseña?"
       update: "Nueva contraseña"
       edit: "Nueva contraseña"
+
+  accounts:
+    title:
+      index: "Cuentas"
+      new: "Nueva"
+      create: "Crear"
+      edit: "Editar"
+      update: "Actualizar"
+      show: "Cuenta"

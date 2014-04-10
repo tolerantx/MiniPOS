@@ -37,6 +37,8 @@ MiniPos::Application.routes.draw do
     end
   end
 
+  resources :accounts
+
   root 'customers#index'
 
   # resources :versions
