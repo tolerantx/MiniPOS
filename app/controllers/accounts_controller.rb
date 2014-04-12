@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @search = params[:search] || {}
     @accounts = Account.all #search(params[:search]).paginate(:page => params[:page])
