@@ -1,8 +1,6 @@
 .row
-  .span9
-    - model_class = PurchaseOrder
-    .page-hader
-      %h1= page_header model_class
+  .span12
+    = render 'layouts/partials/header', path: new_purchase_order_path
 
     = form_tag purchase_orders_path, :method => :get, :id => 'purchase_orders-search-form', :class => 'well form-inline' do
       %label
@@ -18,11 +16,11 @@
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
-          %th= model_class.human_attribute_name(:id)
+          %th= PurchaseOrder.human_attribute_name(:id)
           %th= t("activerecord.models.customer")
-          %th= model_class.human_attribute_name(:total)
-          %th= model_class.human_attribute_name(:state)
-          %th= model_class.human_attribute_name(:created_at)
+          %th= PurchaseOrder.human_attribute_name(:total)
+          %th= PurchaseOrder.human_attribute_name(:state)
+          %th= PurchaseOrder.human_attribute_name(:created_at)
           %th= t '.actions', :default => t("helpers.actions")
       %tbody
         - @purchase_orders.each do |purchase_order|
@@ -51,13 +49,3 @@
 
 
     = pagination @purchase_orders
-
-  .span3
-    .text-right
-      = link_to t('.new', :default => t("helpers.links.new")), new_purchase_order_path, :class => 'btn btn-primary'
-
-    .block
-      %h5= t("labels.general_information")
-      %p
-        %strong= t("labels.total_records")
-        = @purchase_orders.count

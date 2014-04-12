@@ -1,21 +1,13 @@
 .row
-  .span9
-    - model_class = Unit
-    .page-hader
-      %h1= page_header model_class
-
-    = form_tag units_path, :method => :get, :id => 'units-search-form', :class => 'well form-inline' do
-      %label
-        %strong= t("labels.search")
-      = text_field_tag 'search[terms]', @search[:terms], :placeholder => t("placeholder.search")
-      = submit_tag 'Buscar', :id => 'units-form-button', :class => 'btn btn-small btn-primary'
-      = link_to t('labels.clear'), units_path, :class => 'btn btn-small'
+  .span12
+    = render 'layouts/partials/header', path: new_unit_path
+    = render 'layouts/partials/search', path: units_path
 
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
-          %th= model_class.human_attribute_name(:name)
-          %th= model_class.human_attribute_name(:created_at)
+          %th= Unit.human_attribute_name(:name)
+          %th= Unit.human_attribute_name(:created_at)
           %th= t '.actions', :default => t("helpers.actions")
       %tbody
         - @units.each do |unit|
@@ -35,13 +27,3 @@
                           :class => 'btn btn-mini btn-danger'
 
     = pagination @units
-
-  .span3
-    .text-right
-      = link_to t('.new', :default => t("helpers.links.new")), new_unit_path, :class => 'btn btn-primary'
-
-    .block
-      %h5= t("labels.general_information")
-      %p
-        %strong= t("labels.total_records")
-        = @units.count
