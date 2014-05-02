@@ -44,6 +44,10 @@ class Ticket < ActiveRecord::Base
     items.collect().sum {|t| t.amount.to_f || 0.00 }
   end
 
+  def folio
+    "%07d" % id
+  end
+
   private
 
   def information_required

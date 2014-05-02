@@ -1,4 +1,5 @@
 class PurchaseOrdersController < ApplicationController
+  load_and_authorize_resource
 
   def index
     @search = params[:search] || {}

@@ -1,0 +1,45 @@
+#print.hide
+
+  %h1 Medicinas Populares el Alivio
+
+  .center Domicilio 234 Col Colonia
+  .center Tel: 33332233 Cel: (044) 3310203040
+  %br
+
+  %p
+    = "Fecha: #{l ticket.created_at.to_date}"
+    %br
+    = "Folio: #{ticket.folio}"
+    %br
+    = "Cliente: #{ticket.recipient.full_name}"
+
+  %table
+    %thead
+      %tr
+        %th.quantity Cantidad
+        %th.description Articulo
+        %th.unit_value Precio
+        %th.amount Total
+
+    %tbody
+      - ticket.items.each do |item|
+        %tr
+          %td.quantity= item.quantity
+          %td.description
+            = item.description
+            &nbsp;
+          %td.unit_value= item.unit_value
+          %td.amount= item.amount
+
+  #totals
+    %strong
+      = "Total: #{number_to_currency ticket.total}"
+
+  .clear
+
+  %br
+  = quantity_to_words(ticket.total)
+  %br
+  %p= "Articulos vendidos: #{ticket.items.size}"
+  %br
+  .center= "No es un comprobante con valor fiscal"

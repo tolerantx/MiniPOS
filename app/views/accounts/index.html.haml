@@ -1,29 +1,28 @@
 .row
   .span12
-    = render 'layouts/partials/header', path: new_unit_path
-    = render 'layouts/partials/search', path: units_path
+    = render 'layouts/partials/header', path: new_account_path
+    = render 'layouts/partials/search', path: accounts_path
 
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
-          %th= Unit.human_attribute_name(:name)
-          %th= Unit.human_attribute_name(:created_at)
+          %th= Account.human_attribute_name(:name)
+          %th= Account.human_attribute_name(:created_at)
           %th= t '.actions', :default => t("helpers.actions")
       %tbody
-        - @units.each do |unit|
+        - @accounts.each do |account|
           %tr
-            %td
-              = link_to unit.name, unit_path(unit)
-            %td=l unit.created_at.to_date
+            %td= link_to account.name, account_path(account)
+            %td=l account.created_at.to_date
             %td
               = link_to t('.show', :default => t("helpers.links.show")),
-                          unit_path(unit), :class => 'btn btn-mini btn-warning'
+                          account_path(account), :class => 'btn btn-mini btn-warning'
               = link_to t('.edit', :default => t("helpers.links.edit")),
-                          edit_unit_path(unit), :class => 'btn btn-mini btn-primary'
+                          edit_account_path(account), :class => 'btn btn-mini btn-primary'
               = link_to t('.destroy', :default => t("helpers.links.destroy")),
-                          unit_path(unit),
+                          account_path(account),
                           :method => :delete,
                           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                           :class => 'btn btn-mini btn-danger'
 
-    = pagination @units
+    = pagination @accounts

@@ -55,7 +55,10 @@
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),
               tickets_path, :class => 'btn'
+  = link_to t('links.print'), '', :id => "print_it", :class => 'btn btn-info'
   = link_to t('ticket_state.cancel'),
               cancel_ticket_path(@ticket),
               :data => { :confirm => t('ticket_state.confirm.cancel') },
               :class => 'btn btn-danger' if @ticket.created? || @ticket.delivered?
+
+= render partial: "layouts/print_ticket", locals: { ticket: @ticket }

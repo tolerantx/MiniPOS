@@ -1,0 +1,65 @@
+@media print {
+  @page {
+    margin: 0.50cm 0.3cm;
+    size: auto;
+  }
+
+  .hide { display: block; }
+
+  #print {
+    font-size: 16px;
+    height: 100%;
+    width: 10cm;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    h1 {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 18px;
+      padding: 10px 0px;
+      line-height: 20px;
+    }
+    .center {
+      text-align: center;
+    }
+
+    table {
+      font-size: 16px;
+
+      thead th.quantity { width: 1cm; }
+      thead th.description { width: 4cm; text-align: center; }
+      thead th.unit_value,
+      thead th.amount {
+        width: 2.5cm;
+        text-align: center;
+      }
+
+      tbody td.quantity { width: 1cm; }
+      tbody td.description { width: 4cm; background: #ccc; }
+      tbody td.unit_value,
+      tbody td.amount {
+        width: 2.5cm;
+        text-align: right;
+      }
+    }
+
+
+    .section {
+      width: 10cm;
+      padding: 5px 0px;
+    }
+
+    #totals {
+      width: 15em;
+      float: right;
+      text-align: right;
+    }
+
+    .clear { clear: both; }
+
+  }
+}

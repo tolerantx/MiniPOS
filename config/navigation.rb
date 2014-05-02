@@ -60,6 +60,7 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.item :product, t("navigation.products"), products_path
       sub_nav.item :category, t("navigation.categories"), categories_path
       sub_nav.item :unit, t("navigation.units"), units_path
+      sub_nav.item :account, t("navigation.accounts"), accounts_path if can? :manage, Account
     end
 
     primary.item :sign_out, content_tag(:i, "", :class => "icon-off icon-white"), "#", {:id => "btn-sign-out"}

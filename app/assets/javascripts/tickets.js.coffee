@@ -12,3 +12,7 @@ $ ->
       parent.find('span.product_amount').text(amount)
 
       window.total_calculation()
+
+  $('#print_it').click (e) ->
+    e.preventDefault()
+    $('#print').jqprint()

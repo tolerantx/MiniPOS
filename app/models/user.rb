@@ -4,4 +4,15 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  belongs_to :role
+
+  def super_admin?
+    role ? role.name.eql?('Super Admin') : false
+  end
+
+  def admin?
+    role ? role.name.eql?('Admin') : false
+  end
+
 end

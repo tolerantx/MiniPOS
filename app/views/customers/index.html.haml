@@ -1,22 +1,14 @@
 
 .row
-  .span9
-    - model_class = Customer
-    .page-header
-      %h1= page_header model_class
-
-    = form_tag customers_path, :method => :get, :id => 'customers-search-form', :class => 'well form-inline' do
-      %label
-        %strong= t("labels.search")
-      = text_field_tag 'search[terms]', @search[:terms], :placeholder => t("placeholder.search")
-      = submit_tag 'Buscar', :id => 'customers-form-button', :class => 'btn btn-small btn-primary'
-      = link_to t('labels.clear'), customers_path, :class => 'btn btn-small'
+  .span12
+    = render 'layouts/partials/header', path: new_customer_path
+    = render 'layouts/partials/search', path: customers_path
 
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
-          %th= model_class.human_attribute_name(:full_name)
-          %th= model_class.human_attribute_name(:created_at)
+          %th= Customer.human_attribute_name(:full_name)
+          %th= Customer.human_attribute_name(:created_at)
           %th= t '.actions', :default => t("helpers.actions")
       %tbody
         - @customers.each do |customer|
@@ -36,14 +28,3 @@
                           :class => 'btn btn-mini btn-danger'
 
     = pagination @customers
-
-  .span3
-    .text-right
-      = link_to t('.new', :default => t("helpers.links.new")), new_customer_path, :class => 'btn btn-primary'
-
-    .block
-      %h5= t("labels.general_information")
-      %p
-        %strong= t("labels.total_records")
-        = @customers.count
-

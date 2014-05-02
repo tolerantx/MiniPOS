@@ -1,0 +1,7 @@
+- model_class = params[:controller]
+= form_tag path, :method => :get, :id => "#{model_class}-search-form", :class => 'well form-inline' do
+  %label
+    %strong= t("labels.search")
+  = text_field_tag 'search[terms]', @search[:terms], :placeholder => t("placeholder.search")
+  = submit_tag 'Buscar', :id => "#{model_class}-form-button", :class => 'btn btn-small btn-primary'
+  = link_to t('labels.clear'), path, :class => 'btn btn-small'

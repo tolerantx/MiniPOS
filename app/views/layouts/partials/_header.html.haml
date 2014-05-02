@@ -1,0 +1,8 @@
+.page-header
+  .row
+    .span9
+      %h1= page_header params[:controller].camelize.singularize.constantize
+
+    .span3
+      .text-right
+        = link_to t('.new', :default => t("helpers.links.new")), path, :class => 'btn btn-primary'
