@@ -1,9 +1,12 @@
 class Product < ActiveRecord::Base
+  include ActiveRecord::General
+
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :suppliers
   has_many :tickets
 
   belongs_to :unit
+  belongs_to :account
 
   validates :name, :price, :presence => true
   validates :price, numericality: { greater_than: 0 }

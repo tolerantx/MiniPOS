@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role
+  belongs_to :account
 
   def super_admin?
     role ? role.name.eql?('Super Admin') : false

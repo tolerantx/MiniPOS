@@ -1,9 +1,12 @@
 class Customer < ActiveRecord::Base
+  include ActiveRecord::General
 
   has_one :address, as: :owner, dependent: :destroy
   has_many :phones, as: :owner, dependent: :destroy
   has_many :emails, as: :owner, dependent: :destroy
   has_many :tickets
+
+  belongs_to :account
 
   validates :first_name, :last_name, :presence => true
 

@@ -1,5 +1,9 @@
 class Category < ActiveRecord::Base
+  include ActiveRecord::General
+
   has_many :products
+
+  belongs_to :account
 
   validates :name, :presence => true
 

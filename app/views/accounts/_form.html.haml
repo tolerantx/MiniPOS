@@ -1,4 +1,4 @@
-= form_for(@account) do |f|
+= nested_form_for @account, html: { class: 'form-horizontal', id: 'account_form' } do |f|
   = error_messages(@account)
   .row
     .span4
@@ -6,6 +6,44 @@
         = f.label :name, :class => 'control-label'
         .controls
           = f.text_field :name
+
+  %h3
+    = t("labels.user")
+    %span
+      = f.link_to_add t("labels.add_user"), :users, "data-target" => "#users"
+
+  #users
+    = f.fields_for :users, :wrapper => false do |user_form|
+      .fields
+        .row
+          .span4
+            .control-group
+              = user_form.label :email, :class => 'control-label'
+              .controls
+                = user_form.text_field :email
+
+          .span4
+            .controls-group
+              = user_form.label :role_id, :class => 'control-label'
+              .controls
+                = user_form.collection_select :role_id, Role.all, :id, :name, { :include_blank => t("labels.select") }
+
+
+        .row
+          .span4
+            .control-group
+              = user_form.label :password, :class => 'control-label'
+              .controls
+                = user_form.password_field :password
+          .span4
+            .control-group
+              = user_form.label :password_confirmation, :class => 'control-label'
+              .controls
+                = user_form.password_field :password_confirmation
+
+          .span2
+            = user_form.link_to_remove t("labels.delete_user")
+
 
   .form-actions
     = link_to t('.cancel', :default => t("helpers.links.cancel")), accounts_path, :class => 'btn'
