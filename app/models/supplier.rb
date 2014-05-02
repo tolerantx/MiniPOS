@@ -1,9 +1,13 @@
 class Supplier < ActiveRecord::Base
+  include ActiveRecord::General
+
   has_one :address, as: :owner, dependent: :destroy
   has_many :phones, as: :owner, dependent: :destroy
   has_many :emails, as: :owner, dependent: :destroy
   has_many :tickets
   has_and_belongs_to_many :products
+
+  belongs_to :account
 
   has_many :purchase_orders
 

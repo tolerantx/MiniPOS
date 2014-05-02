@@ -3,7 +3,9 @@ class ProductsController < ApplicationController
 
   def index
     @search = params[:search] || {}
-    @products = Product.search(params[:search]).paginate(:page => params[:page])
+    @products = Product.by_account(current_user)
+                       .search(params[:search])
+                       .paginate(:page => params[:page])
   end
 
   def new
@@ -12,6 +14,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(permitted_params)
+    @product.account = current_user.account if current_user.account
 
     if @product.save
       redirect_to product_path(@product)
@@ -21,11 +24,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = find_record
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = find_record
 
     if @product.update(permitted_params)
       redirect_to product_path(@product)
@@ -35,11 +38,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = find_record
   end
 
   def destroy
-    @product = Product.find(params[:id])
+    @product = find_record
     @product.destroy
 
     redirect_to products_path
@@ -73,5 +76,9 @@ class ProductsController < ApplicationController
       :purchase_price,
       :category_ids => [],
       :supplier_ids => [])
+  end
+
+  def find_record
+    Product.find_record(params[:id], current_user.account)
   end
 end

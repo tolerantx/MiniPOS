@@ -1,5 +1,9 @@
 class Unit < ActiveRecord::Base
+  include ActiveRecord::General
+
   has_many :products
+
+  belongs_to :account
 
   validates :name, presence: true
 
@@ -13,4 +17,5 @@ class Unit < ActiveRecord::Base
     end
     where conditions.join(" AND ")
   }
+
 end

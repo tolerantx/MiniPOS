@@ -3,7 +3,9 @@ class CategoriesController < ApplicationController
 
   def index
     @search = params[:search] || {}
-    @categories = Category.search(params[:search]).paginate(:page => params[:page])
+    @categories = Category.by_account(current_user)
+                          .search(params[:search])
+                          .paginate(:page => params[:page])
   end
 
   def new
@@ -12,6 +14,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(permitted_params)
+    @category.account = current_user.account if current_user.account
 
     if @category.save
       redirect_to category_path(@category)
@@ -21,11 +24,11 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    @category = find_record
   end
 
   def update
-    @category = Category.find(params[:id])
+    @category = find_record
     if @category.update(permitted_params)
       redirect_to category_path(@category)
     else
@@ -34,11 +37,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = find_record
   end
 
   def destroy
-    @category = Category.find(params[:id])
+    @category = find_record
     @category.destroy
 
     redirect_to categories_path
@@ -46,8 +49,11 @@ class CategoriesController < ApplicationController
 
   private
 
-
   def permitted_params
     params[:category].permit(:id, :name)
+  end
+
+  def find_record
+    Category.find_record(params[:id], current_user.account)
   end
 end

@@ -3,7 +3,9 @@ class TicketsController < ApplicationController
 
   def index
     @search = params[:search] || {}
-    @tickets = Ticket.search(params[:search]).paginate(:page => params[:page])
+    @tickets = Ticket.by_account(current_user)
+                     .search(params[:search])
+                     .paginate(:page => params[:page])
   end
 
   def new
@@ -12,6 +14,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(permitted_params)
+    @ticket.account = current_user.account if current_user.account
 
     if @ticket.save
       redirect_to ticket_path(@ticket)
@@ -21,17 +24,17 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @ticket = Ticket.find(params[:id])
+    @ticket = find_record
   end
 
   def deliver
-    @ticket = Ticket.find(params[:id])
+    @ticket = find_record
     @ticket.deliver
     redirect_to :action => 'index'
   end
 
   def cancel
-    @ticket = Ticket.find(params[:id])
+    @ticket = find_record
     @ticket.cancel
     redirect_to :action => 'index'
   end
@@ -48,4 +51,7 @@ class TicketsController < ApplicationController
     )
   end
 
+  def find_record
+    Ticket.find_record(params[:id], current_user.account)
+  end
 end

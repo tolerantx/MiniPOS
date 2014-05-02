@@ -1,9 +1,13 @@
 class Ticket < ActiveRecord::Base
+  include ActiveRecord::General
+
   STATES = [%w[Creado created], %w[Entregado delivered], %w[Cancelado canceled]]
 
   has_one :recipient, dependent: :destroy
 
   has_many :items, as: :owner, dependent: :destroy
+
+  belongs_to :account
 
   validates :total, :presence => true
   validate :information_required
@@ -30,13 +34,13 @@ class Ticket < ActiveRecord::Base
     includes(:recipient).where(conditions.join(" AND ")).references(:recipient)
   }
 
-  state_machine :initial => :created do
+  state_machine initial: :created do
     event :cancel do
-      transition :created => :canceled
+      transition created: :canceled
     end
 
     event :deliver do
-      transition :created => :delivered
+      transition created: :delivered
     end
   end
 
@@ -58,8 +62,8 @@ class Ticket < ActiveRecord::Base
   def set_values
     if self.customer_id.present?
       customer                = Customer.find(self.customer_id)
-      self.recipient          = Recipient.new(:first_name => customer.first_name, :last_name => customer.last_name)
-      self.recipient.address  = Address.new(:address1 => customer.address.address1, :address2 => customer.address.address2, :zip_code => customer.address.zip_code, :state => customer.address.state, :city => customer.address.city, :town => customer.address.town, :location => customer.address.location)
+      self.recipient          = Recipient.new(first_name: customer.first_name, last_name: customer.last_name, account_id: customer.account_id)
+      self.recipient.address  = Address.new(address1: customer.address.address1, address2: customer.address.address2, zip_code: customer.address.zip_code, state: customer.address.state, city: customer.address.city, town: customer.address.town, location: customer.address.location)
       self.total              = total_tickets
     end
   end

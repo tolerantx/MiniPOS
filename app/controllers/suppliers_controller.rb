@@ -3,7 +3,9 @@ class SuppliersController < ApplicationController
 
   def index
     @search = params[:search] || {}
-    @suppliers = Supplier.search(params[:search]).paginate(:page => params[:page])
+    @suppliers = Supplier.by_account(current_user)
+                         .search(params[:search])
+                         .paginate(:page => params[:page])
   end
 
   def new
@@ -12,6 +14,7 @@ class SuppliersController < ApplicationController
 
   def create
     @supplier = Supplier.new(permitted_params)
+    @supplier.account = current_user.account if current_user.account
 
     if @supplier.save
       redirect_to supplier_path(@supplier)
@@ -21,11 +24,11 @@ class SuppliersController < ApplicationController
   end
 
   def edit
-    @supplier = Supplier.find(params[:id])
+    @supplier = find_record
   end
 
   def update
-    @supplier = Supplier.find(params[:id])
+    @supplier = find_record
 
     if @supplier.update(permitted_params)
       redirect_to supplier_path(@supplier)
@@ -35,11 +38,11 @@ class SuppliersController < ApplicationController
   end
 
   def show
-    @supplier = Supplier.find(params[:id])
+    @supplier = find_record
   end
 
   def destroy
-    @supplier = Supplier.find(params[:id])
+    @supplier = find_record
     @supplier.destroy
 
     redirect_to suppliers_path
@@ -47,14 +50,18 @@ class SuppliersController < ApplicationController
 
   private
 
-    def permitted_params
-      params[:supplier].permit(
-        :id,
-        :name,
-        :product_ids => [],
-        address_attributes: [:address1, :address2, :state, :city, :town, :location, :zip_code, :comments],
-        phones_attributes: [:number, :phone_type, :_destroy, :id],
-        emails_attributes: [:email, :email_type, :_destroy, :id]
-      )
-    end
+  def permitted_params
+    params[:supplier].permit(
+      :id,
+      :name,
+      :product_ids => [],
+      address_attributes: [:address1, :address2, :state, :city, :town, :location, :zip_code, :comments],
+      phones_attributes: [:number, :phone_type, :_destroy, :id],
+      emails_attributes: [:email, :email_type, :_destroy, :id]
+    )
+  end
+
+  def find_record
+    Supplier.find_record(params[:id], current_user.account)
+  end
 end

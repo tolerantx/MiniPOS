@@ -1,9 +1,12 @@
 class PurchaseOrder < ActiveRecord::Base
+  include ActiveRecord::General
+
   STATES = [%w[Creado created], %w[Recibido received], %w[Cancelado canceled]]
 
   has_many :items, as: :owner, dependent: :destroy
 
   belongs_to :supplier
+  belongs_to :account
 
   validates :total, :presence => true
 
@@ -23,6 +26,10 @@ class PurchaseOrder < ActiveRecord::Base
     conditions << "state = '#{params[:state]}'" if params && params[:state].present?
 
     includes(:supplier).where(conditions.join(" AND ")).references(:supplier)
+  }
+
+  scope :by_account, -> (user) {
+    where(account_id: user.account.id) if user.admin?
   }
 
   state_machine :initial => :created do
