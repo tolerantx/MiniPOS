@@ -4,6 +4,8 @@
     .page-hader
       %h1= page_header model_class
 
+    = total_records(@version.size)
+
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr

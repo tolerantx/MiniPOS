@@ -46,6 +46,7 @@ es-MX:
     user: 'Usuarios'
     add_user: "Agregar Usuario"
     delete_user: "Eliminar Usuario"
+    total_records: "Registros encontrados"
 
   will_paginate:
     previous_label: "&#8592; Anterior"

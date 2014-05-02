@@ -3,6 +3,8 @@
     = render 'layouts/partials/header', path: new_unit_path
     = render 'layouts/partials/search', path: units_path
 
+    = total_records(@units.size)
+
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
