@@ -46,7 +46,8 @@ module ApplicationHelper
 
   def pagination(object)
     if object.count > WillPaginate.per_page
-      content_tag(:div, will_paginate(object), :class => 'apple_pagination')
+      content_tag(:div, page_entries_info(object), class: 'total_records') +
+      content_tag(:div, will_paginate(object), class: 'apple_pagination')
     end
   end
 
