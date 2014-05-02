@@ -4,6 +4,8 @@
     = render 'layouts/partials/header', path: new_supplier_path
     = render 'layouts/partials/search', path: suppliers_path
 
+    = total_records(@suppliers.size)
+
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr

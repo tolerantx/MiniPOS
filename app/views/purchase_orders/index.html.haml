@@ -12,6 +12,7 @@
       = submit_tag 'Buscar', :id => 'purchase_orders-form-button', :class => 'btn btn-small btn-primary'
       = link_to t('labels.clear'), purchase_orders_path, :class => 'btn btn-small'
 
+    = total_records(@purchase_orders.size)
 
     %table.table.table-hover.table-striped.table-condensed
       %thead
