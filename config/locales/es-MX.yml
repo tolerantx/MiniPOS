@@ -43,6 +43,9 @@ es-MX:
     customer_information: "Información del Cliente"
     address: "Dirección"
     state: "Estatus"
+    user: 'Usuarios'
+    add_user: "Agregar Usuario"
+    delete_user: "Eliminar Usuario"
 
   will_paginate:
     previous_label: "&#8592; Anterior"

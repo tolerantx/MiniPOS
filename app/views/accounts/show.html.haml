@@ -1,12 +1,19 @@
-- model_class = Account
 .page-header
-  %h1= page_header model_class
+  %h1= page_header Account
 
 .row
   .span8
     %p
-      %strong= model_class.human_attribute_name(:name)
+      %strong= Account.human_attribute_name(:name)
       = @account.name
+
+  .span4
+    .block
+      %h5= t("labels.user")
+      - @account.users.each do |user|
+        %p
+          = user.email
+          = user.role.name
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")),

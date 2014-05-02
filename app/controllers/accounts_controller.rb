@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create]
 
   def index
     @search = params[:search] || {}
@@ -47,6 +47,10 @@ class AccountsController < ApplicationController
   private
 
   def permitted_params
-    params[:account].permit(:id, :name)
+    params[:account].permit(
+      :id,
+      :name,
+      users_attributes: [:email, :password, :password_confirmation, :role_id, :_destroy, :id]
+    )
   end
 end

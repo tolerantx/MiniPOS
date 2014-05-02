@@ -73,3 +73,13 @@ h3 {
   }
 }
 
+#account_form {
+  .fields {
+    border-bottom: 1px solid #e5e5e5;
+    padding-top: 15px;
+  }
+  .remove_nested_fields {
+    padding-left: 20px;
+  }
+}
+
