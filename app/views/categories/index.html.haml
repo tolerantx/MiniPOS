@@ -3,7 +3,7 @@
     = render 'layouts/partials/header', path: new_category_path
     = render 'layouts/partials/search', path: categories_path
 
-    = total_records(@categories.size)
+    = total_records(@categories.length)
 
     %table.table.table-hover.table-striped.table-condensed
       %thead
