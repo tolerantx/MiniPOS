@@ -66,10 +66,4 @@ module ApplicationHelper
   def quantity_to_words(number)
     number.to_words.capitalize << ' pesos ' << (number.to_s.split('.')[1] || 0).rjust(2,'0') << '/100 M.N.'
   end
-
-  def total_records(quantity)
-    content_tag(:div, class: 'total_records') do
-      content_tag(:span, "#{t('labels.total_records')}: #{quantity}")
-    end
-  end
 end

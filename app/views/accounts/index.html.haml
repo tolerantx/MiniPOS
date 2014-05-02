@@ -3,8 +3,6 @@
     = render 'layouts/partials/header', path: new_account_path
     = render 'layouts/partials/search', path: accounts_path
 
-    = total_records(@accounts.count)
-
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr

@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     @search = params[:search] || {}
     @products = Product.by_account(current_user)
                        .search(params[:search])
-                       .paginate(:page => params[:page], :per_page => 1)
+                       .paginate(:page => params[:page])
   end
 
   def new
