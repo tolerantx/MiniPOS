@@ -36,4 +36,7 @@ class Product < ActiveRecord::Base
     suggestions.limit(10).collect { |p| { :label => p.name, :value => p.name, :product => {:id => p.id, :code => p.code, :description => p.name, :unit_value => p.price, :purchase_price => p.purchase_price } } }
   end
 
+  def code_for_csv
+    code.present? ? code : nil
+  end
 end

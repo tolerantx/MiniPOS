@@ -3,6 +3,10 @@
     = render 'layouts/partials/header', path: new_product_path
     = render 'layouts/partials/search', path: products_path
 
+    = link_to products_path(format: :csv) do
+      %i.fa.fa-table
+      = t('links.export_excel')
+
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
