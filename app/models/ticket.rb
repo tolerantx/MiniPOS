@@ -27,8 +27,9 @@ class Ticket < ActiveRecord::Base
 
     terms = !params.nil? ? params[:terms] : ""
     terms.gsub(/[^a-zA-Z0-9\-Ññ\s]/, '').split(' ').each do |criteria|
-      conditions << "tickets.id like '%#{criteria}%' or recipients.first_name like '%#{criteria}%' or recipients.last_name like '%#{criteria}%'"
+      conditions << "recipients.first_name like '%#{criteria}%' or recipients.last_name like '%#{criteria}%'"
     end
+    conditions << "tickets.id = '#{params[:id]}'" if params && params[:id].present?
     conditions << "state = '#{params[:state]}'" if params && params[:state].present?
 
     includes(:recipient).where(conditions.join(" AND ")).references(:recipient)

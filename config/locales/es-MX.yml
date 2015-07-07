@@ -48,6 +48,8 @@ es-MX:
     add_user: "Agregar Usuario"
     delete_user: "Eliminar Usuario"
     total_records: "Registros encontrados"
+    search_customer: 'Cliente'
+    search_id: 'ID'
 
   will_paginate:
     previous_label: "&#8592; Anterior"
@@ -58,6 +60,8 @@ es-MX:
 
   placeholder:
     search: "Escribe.."
+    search_customer: "Nombre del cliente"
+    search_id: 'ID'
 
   select_blank: "Selecciona ..."
 
