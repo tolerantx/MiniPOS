@@ -83,5 +83,8 @@ $ ->
       el.find('span.product_' + key).text(value)
     )
 
-    $('.product_quantity').val('1') if $('.product_quantity').val() is ''
-    $('.product_unit_value').trigger('change')
+    quantity   = el.find('.product_quantity')
+    unit_value = el.find('.product_unit_value')
+
+    quantity.val('1') if quantity.val() is ''
+    unit_value.trigger('change')
