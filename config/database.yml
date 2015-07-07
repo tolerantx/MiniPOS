@@ -1,24 +1,25 @@
+default: &default
+  adapter: mysql2
+  username: root
+  password:
+  encoding: utf8
 
 development:
-  adapter: postgresql
-  template: template0
+  <<: *default
   database: mini_pos
-  pool: 5
-  username: mini_pos
-  password:
 
-test:
-  adapter: postgresql
-  template: template0
-  database: mini_pos_test
-  pool: 5
-  username: mini_pos
-  password:
+# test:
+#   adapter: postgresql
+#   template: template0
+#   database: mini_pos_test
+#   pool: 5
+#   username: mini_pos
+#   password:
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: mini_pos_production
-  pool: 5
-  username: mini_pos
-  password:
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: mini_pos_production
+#   pool: 5
+#   username: mini_pos
+#   password:

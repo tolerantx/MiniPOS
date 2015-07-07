@@ -1,6 +1,6 @@
 @media print {
   @page {
-    margin: 0.50cm 0.3cm;
+    margin: 0 0.3cm;
     size: auto;
   }
 
@@ -30,7 +30,7 @@
     table {
       font-size: 16px;
 
-      thead th.quantity { width: 1cm; }
+      thead th.quantity { width: 1.3cm; }
       thead th.description { width: 4cm; text-align: center; }
       thead th.unit_value,
       thead th.amount {

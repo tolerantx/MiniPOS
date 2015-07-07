@@ -64,6 +64,10 @@ module ApplicationHelper
   end
 
   def quantity_to_words(number)
-    number.to_words.capitalize << ' pesos ' << (number.to_s.split('.')[1] || 0).rjust(2,'0') << '/100 M.N.'
+    number.to_words.capitalize << ' pesos ' << get_decimals(number) << '/100 M.N.'
+  end
+
+  def get_decimals(number)
+    (number_with_precision(number, presicion: 2).to_s.split('.')[1] || 0).rjust(2,'0')
   end
 end
