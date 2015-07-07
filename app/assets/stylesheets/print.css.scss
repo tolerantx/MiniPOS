@@ -31,11 +31,11 @@
       font-size: 16px;
 
       thead th.quantity { width: 1.3cm; }
-      thead th.description { width: 4cm; text-align: center; }
+      thead th.description { width: 5cm; text-align: center; }
       thead th.unit_value,
       thead th.amount {
-        width: 2.5cm;
-        text-align: center;
+        width: 2cm;
+        text-align: right;
       }
 
       tbody td.quantity { width: 1cm; }
