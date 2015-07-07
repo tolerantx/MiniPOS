@@ -34,7 +34,7 @@ class Ticket < ActiveRecord::Base
 
     if params && params[:start_date]
       start_date = Date.parse(params[:start_date])
-      end_date = (params[:end_date].present? ? Date.parse(params[:end_date]) : Date.today) +1
+      end_date = params[:end_date].present? ? Date.parse(params[:end_date]) + 1 : Date.today + 1
       conditions << "tickets.created_at BETWEEN '#{start_date}' AND '#{end_date}'"
     end
     includes(:recipient).where(conditions.join(" AND ")).references(:recipient)
