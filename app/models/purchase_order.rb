@@ -26,6 +26,12 @@ class PurchaseOrder < ActiveRecord::Base
     conditions << "suppliers.id = '#{params[:id]}'" if params && params[:id].present?
     conditions << "state = '#{params[:state]}'" if params && params[:state].present?
 
+    if params && params[:start_date]
+      start_date = Date.parse(params[:start_date])
+      end_date = (params[:end_date].present? ? Date.parse(params[:end_date]) : Date.today) + 1
+      conditions << "purchase_orders.created_at BETWEEN '#{start_date}' AND '#{end_date}'"
+    end
+
     includes(:supplier).where(conditions.join(" AND ")).references(:supplier)
   }
 

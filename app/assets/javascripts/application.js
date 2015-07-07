@@ -17,6 +17,8 @@
 //= require lib/jquery.watch
 //= require lib/jquery.jqprint-0.3
 //= require twitter/bootstrap
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require turbolinks
 //= require mini_pos
 //= require_tree .
@@ -26,4 +28,9 @@ $(function(){
     e.preventDefault();
     $('#form_signout .btn-link').click();
   })
+
+  $('.input-daterange').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+  $('.input-daterange input').on('changeDate', function(e) {
+    $(this).datepicker('hide');
+  });
 })

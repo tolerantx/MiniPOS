@@ -51,6 +51,7 @@ es-MX:
     search_customer: 'Cliente'
     search_supplier: 'Proveedor'
     search_id: 'ID'
+    search_date: 'Fecha desde'
 
   will_paginate:
     previous_label: "&#8592; Anterior"
