@@ -21,8 +21,9 @@ class PurchaseOrder < ActiveRecord::Base
 
     terms = !params.nil? ? params[:terms] : ""
     terms.gsub(/[^a-zA-Z0-9\-Ññ\s]/, '').split(' ').each do |criteria|
-      conditions << "purchase_orders.id like '%#{criteria}%' or suppliers.name like '%#{criteria}%'"
+      conditions << "suppliers.name like '%#{criteria}%'"
     end
+    conditions << "suppliers.id = '#{params[:id]}'" if params && params[:id].present?
     conditions << "state = '#{params[:state]}'" if params && params[:state].present?
 
     includes(:supplier).where(conditions.join(" AND ")).references(:supplier)

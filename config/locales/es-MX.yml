@@ -49,6 +49,7 @@ es-MX:
     delete_user: "Eliminar Usuario"
     total_records: "Registros encontrados"
     search_customer: 'Cliente'
+    search_supplier: 'Proveedor'
     search_id: 'ID'
 
   will_paginate:
@@ -61,6 +62,7 @@ es-MX:
   placeholder:
     search: "Escribe.."
     search_customer: "Nombre del cliente"
+    search_supplier: "Nombre del proveedor"
     search_id: 'ID'
 
   select_blank: "Selecciona ..."
