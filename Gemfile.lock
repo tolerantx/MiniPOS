@@ -54,6 +54,7 @@ GEM
       tilt
     hike (1.2.3)
     i18n (0.7.0)
+    iconv (1.0.4)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -169,6 +170,7 @@ DEPENDENCIES
   devise (~> 3.0.3)
   font-awesome-rails (~> 4.3.0.0)
   haml (~> 4.0.3)
+  iconv (~> 1.0.4)
   jbuilder (~> 1.2)
   jquery-rails (~> 3.0.4)
   jquery-ui-rails (~> 4.0.3)

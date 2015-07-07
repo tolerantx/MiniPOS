@@ -6,6 +6,15 @@ class TicketsController < ApplicationController
     @tickets = Ticket.by_account(current_user)
                      .search(params[:search])
                      .paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        @tickets = Ticket.by_account(current_user).search(params[:search])
+        headers['Content-Disposition'] = "attachment; filename=\"tickets.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   def new
