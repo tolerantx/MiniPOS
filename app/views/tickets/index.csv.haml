@@ -2,4 +2,4 @@
 - headers = [ Ticket.human_attribute_name(:id), t("activerecord.models.customer"), Ticket.human_attribute_name(:total), Ticket.human_attribute_name(:state), 'Fecha' ]
 = CSV.generate_line headers
 - @tickets.each do |ticket|
-  = CSV.generate_line([ ticket.id, ticket.recipient ? Iconv.iconv('iso-8859-1', 'utf-8', ticket.recipient.full_name).first : nil, ticket.total, ticket.state, ticket.created_at ])
+  = CSV.generate_line([ ticket.id, ticket.recipient ? Iconv.iconv('iso-8859-1', 'utf-8', ticket.recipient.full_name).first : nil, ticket.total, t("ticket_state.#{ticket.state}"), ticket.created_at ])
