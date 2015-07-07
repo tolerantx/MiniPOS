@@ -164,7 +164,7 @@ DEPENDENCIES
   cancan (~> 1.6.10)
   coffee-rails (~> 4.0.0)
   devise (~> 3.0.3)
-  font-awesome-rails
+  font-awesome-rails (~> 4.3.0.0)
   haml (~> 4.0.3)
   jbuilder (~> 1.2)
   jquery-rails (~> 3.0.4)
