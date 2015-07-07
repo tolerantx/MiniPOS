@@ -6,6 +6,15 @@ class ProductsController < ApplicationController
     @products = Product.by_account(current_user)
                        .search(params[:search])
                        .paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        @products = Product.by_account(current_user).search(params[:search])
+        headers['Content-Disposition'] = "attachment; filename=\"productos.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   def new

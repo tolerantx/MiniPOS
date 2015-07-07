@@ -1,0 +1,5 @@
+= CSV.generate_line ['Medicinas Populares el Alivio']
+- headers = [ 'Codigo', Product.human_attribute_name(:name), Product.human_attribute_name(:price), Product.human_attribute_name(:purchase_price), Product.human_attribute_name(:existence) ]
+= CSV.generate_line headers
+- @products.each do |product|
+  = CSV.generate_line([ product.code_for_csv, product.name, product.price, product.purchase_price, product.existence ])

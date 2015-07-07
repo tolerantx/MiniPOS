@@ -5,6 +5,7 @@ es-MX:
   links:
     sign_out: "Salir"
     print: "Imprimir"
+    export_excel: "Exportar a Excel"
 
   errors:
     header: "Se han encontrado %{number} error(es):"
