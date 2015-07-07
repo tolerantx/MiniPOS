@@ -52,6 +52,6 @@ class TicketsController < ApplicationController
   end
 
   def find_record
-    Ticket.find_record(params[:id], current_user.account)
+    Ticket.includes(items: [:product]).find_record(params[:id], current_user.account)
   end
 end

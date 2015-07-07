@@ -6,4 +6,8 @@ class Item < ActiveRecord::Base
     product.decrement!(:existence, quantity) if product_id
   end
 
+  def name
+    product.short_name.present? ? product.short_name : description
+  end
+
 end
