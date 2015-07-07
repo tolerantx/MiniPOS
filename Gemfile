@@ -29,6 +29,8 @@ gem 'turbolinks', '~> 1.2.0'
 gem 'jbuilder', '~> 1.2'
 gem 'number_to_words', '~> 1.2.1'
 gem 'font-awesome-rails', '~> 4.3.0.0'
+gem 'bootstrap-datepicker-rails', '~> 1.4.0'
+gem 'iconv', '~> 1.0.4'
 
 group :doc do
   gem 'sdoc', require: false

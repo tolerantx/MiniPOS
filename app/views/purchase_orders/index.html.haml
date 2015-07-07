@@ -4,19 +4,34 @@
 
     = form_tag purchase_orders_path, :method => :get, :id => 'purchase_orders-search-form', :class => 'well form-inline' do
       %label
-        %strong= t("labels.search")
-      = text_field_tag 'search[terms]', @search[:terms], :placeholder => t("placeholder.search")
+        %strong= t("labels.search_id")
+      = text_field_tag 'search[id]', @search[:id], :placeholder => t("placeholder.search_id")
+
+      %label
+        %strong= t("labels.search_supplier")
+      = text_field_tag 'search[terms]', @search[:terms], :placeholder => t("placeholder.search_supplier")
+
       %label
         %strong= t("labels.state")
-      = select_tag 'search[state]', options_for_select(PurchaseOrder::STATES, :selected => params[:search] ? params[:search][:state] : ""), { :include_blank => true }
-      = submit_tag 'Buscar', :id => 'purchase_orders-form-button', :class => 'btn btn-small btn-primary'
-      = link_to t('labels.clear'), purchase_orders_path, :class => 'btn btn-small'
+      = select_tag 'search[state]', options_for_select(Ticket::STATES, :selected => params[:search] ? params[:search][:state] : ""), { :include_blank => true }
+
+      = submit_tag 'Buscar', :id => 'tickets-form-button', :class => 'btn btn-small btn-primary'
+      = link_to t('labels.clear'), tickets_path, :class => 'btn btn-small'
+      %br
+      %br
+      %label
+        %strong= t("labels.search_date")
+      %span.input-daterange#datepicker
+        = text_field_tag 'search[start_date]', @search[:start_date], class: 'input-small'
+        %span.add-on
+          %strong hasta
+        = text_field_tag 'search[end_date]', @search[:end_date], class: 'input-small'
 
     %table.table.table-hover.table-striped.table-condensed
       %thead
         %tr
           %th= PurchaseOrder.human_attribute_name(:id)
-          %th= t("activerecord.models.customer")
+          %th= t("activerecord.models.supplier")
           %th= PurchaseOrder.human_attribute_name(:total)
           %th= PurchaseOrder.human_attribute_name(:state)
           %th= PurchaseOrder.human_attribute_name(:created_at)

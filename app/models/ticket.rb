@@ -27,10 +27,16 @@ class Ticket < ActiveRecord::Base
 
     terms = !params.nil? ? params[:terms] : ""
     terms.gsub(/[^a-zA-Z0-9\-Ññ\s]/, '').split(' ').each do |criteria|
-      conditions << "tickets.id like '%#{criteria}%' or recipients.first_name like '%#{criteria}%' or recipients.last_name like '%#{criteria}%'"
+      conditions << "recipients.first_name like '%#{criteria}%' or recipients.last_name like '%#{criteria}%'"
     end
+    conditions << "tickets.id = '#{params[:id]}'" if params && params[:id].present?
     conditions << "state = '#{params[:state]}'" if params && params[:state].present?
 
+    if params && params[:start_date]
+      start_date = Date.parse(params[:start_date])
+      end_date = (params[:end_date].present? ? Date.parse(params[:end_date]) : Date.today) +1
+      conditions << "tickets.created_at BETWEEN '#{start_date}' AND '#{end_date}'"
+    end
     includes(:recipient).where(conditions.join(" AND ")).references(:recipient)
   }
 
