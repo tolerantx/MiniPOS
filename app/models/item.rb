@@ -7,7 +7,7 @@ class Item < ActiveRecord::Base
   end
 
   def name
-    product.short_name.present? ? product.short_name : description
+    product && product.short_name.present? ? product.short_name : description
   end
 
 end
